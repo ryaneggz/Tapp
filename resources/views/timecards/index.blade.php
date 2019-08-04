@@ -41,6 +41,7 @@
                               <th scope="row">{{$timecard->employee_id}}</th><td>{{$timecard->time_in}}</td><td>{{$timecard->time_out}}</td><td>{{$timecard->total_time}}</td>
                             </tr>
                           @endforeach
+                          {{$timecards->links()}}
                           @else
                           <p>No Timecards Found</p>
                         @endif

@@ -19,6 +19,7 @@ class CreateTimecardsTable extends Migration
             $table->integer('time_in');
             $table->integer('time_out');
             $table->integer('total_time');
+            $table->longText('shift_summary')->nullable();;
             $table->timestamps();
         });
     }

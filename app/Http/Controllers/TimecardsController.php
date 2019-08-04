@@ -14,7 +14,7 @@ class TimecardsController extends Controller
      */
     public function index()
     {   
-        $timecards = Timecard::all();
+        $timecards = Timecard::orderBy('id', 'desc')->paginate(30);
         return view('timecards.index')->with('timecards', $timecards);
     }
 
@@ -25,7 +25,7 @@ class TimecardsController extends Controller
      */
     public function create()
     {
-        //
+        return view('timecards.create');
     }
 
     /**
