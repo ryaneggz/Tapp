@@ -19,6 +19,9 @@
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href={{ asset("assets/img/apple-icon.png") }}>
     <link rel="icon" type="image/png" sizes="96x96" href={{ asset("assets/img/favicon.png") }}>
+    <!-- DATEPICKER -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
   </head>
 <body>
   
@@ -30,6 +33,17 @@
 	<script src={{ asset("assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js") }}></script>
 	<script src={{ asset("assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js") }}></script>
 	<script src={{ asset("assets/vendor/chartist/js/chartist.min.js") }}></script>
-	<script src={{ asset("assets/scripts/klorofil-common.js") }}></script>
+  <script src={{ asset("assets/scripts/klorofil-common.js") }}></script>
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+
+  $(function() {
+    $( "#datepicker-2" ).datepicker();
+  });
+  </script>
 </body>
 </html>
