@@ -64,30 +64,38 @@
               <div class="panel">
                 <div class="panel-body table-responsive">
                   {{ Form::open(['action' => 'TimecardsController@store', 'method' => 'POST']) }}
+
                     <div class="form-group">
                       <div class="col">
                         {{ Form::label('title', 'Employee ID') }} 
-                        {{ Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'ID #']) }}
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col">
-                        {{ Form::label('title', 'Time-in') }} 
-                        {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{ Form::text('date', '', ['class'=>'form-control', 'id'=>'datepicker', 'placeholder'=>'mm/dd/yyyy']) }}
-                        {{ Form::time('fixture_date', Carbon\Carbon::now()->format('H:i'), ['class'=>'form-control']) }}
+                        {{ Form::text('employee_id', '', ['class' => 'form-control', 'placeholder' => 'ID #']) }}
                       </div>
                     </div>
 
                     <div class="form-group">
                       <div class="col">
-                        {{ Form::label('title', 'Time-in') }} 
+                        {{ Form::label('time-in', 'Time-in') }} 
                         {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{ Form::text('date', '', ['class'=>'form-control', 'id'=>'datepicker-2', 'placeholder'=>'mm/dd/yyyy']) }}
-                        {{ Form::time('fixture_date', Carbon\Carbon::now()->format('H:i'), ['class'=>'form-control']) }}
+                        {{ Form::text('in_date', '', ['class'=>'form-control', 'id'=>'datepicker', 'placeholder'=>'mm/dd/yyyy']) }}
+                        {{ Form::time('time_in', Carbon\Carbon::now()->format('H:i'), ['class'=>'form-control']) }}
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col">
+                        {{ Form::label('time-out', 'Time-out') }} 
+                        {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
+                        {{ Form::text('out_date', '', ['class'=>'form-control', 'id'=>'datepicker-2', 'placeholder'=>'mm/dd/yyyy']) }}
+                        {{ Form::time('time_out', Carbon\Carbon::now()->format('H:i'), ['class'=>'form-control']) }}
+                      </div>
+                      <div class="col">
+                      {{ Form::submit('Submit', ['class'=>'form-control']) }}
                       </div>
                     </div>
                   {{ Form::close() }}
+                  <div class='col'>
+                    @include('inc.messages')
+                  </div>
                 </div>
               </div>
               <!-- END ENTER TIMECARD PANEL -->

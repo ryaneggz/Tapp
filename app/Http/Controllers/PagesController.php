@@ -28,7 +28,7 @@ class PagesController extends Controller
     }
 
     public function dashboard() {
-        $timecards = Timecard::orderBy('id', 'desc')->get();
+        $timecards = Timecard::orderBy('time_in', 'desc')->get();
         return view('pages.dashboard')->with(['timecards' => $timecards]);
     }
 
