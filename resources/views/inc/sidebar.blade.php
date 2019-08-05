@@ -9,6 +9,7 @@
           <div id="subPages" class="collapse ">
             <ul class="nav">
               <li><a href="/profile" class="">Profile</a></li>
+              <li><a href="/timecards/kiosk" class="">Kiosk</a></li>
               <li><a href="/login" class="">Login</a></li>
               <li><a href="/lock" class="">Lockscreen</a></li>
             </ul>

@@ -13,14 +13,14 @@
     <div class="main">
       <!-- MAIN CONTENT -->
       <div class="main-content">
-        <div class="container-fluid">
+        <div class="container">
           <div class="row">
 
               <h1>Create a Post</h1>
               {{ Form::open(['action' => 'TimecardsController@store', 'method' => 'POST']) }}
                 <div class="form-group">
-                  {{ Form::label('title', ) }}
-                  
+                  {{ Form::label('title', 'Title') }} 
+                  {{ Form::number('name', 'value', ['class' => 'form-control', 'placeholder' => 'Timecard']) }}
                 </div>
               {{ Form::close() }}
 

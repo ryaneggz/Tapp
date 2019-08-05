@@ -17,6 +17,7 @@ Route::get('/profile', 'PagesController@profile');
 Route::get('/lock', 'PagesController@lock');
 Route::get('/dashboard', 'PagesController@dashboard');
 
+Route::get('/timecards/kiosk', 'TimecardsController@kiosk');
 
 // Creates routes for all of this resources functions
 Route::resource('timecards', 'TimecardsController');

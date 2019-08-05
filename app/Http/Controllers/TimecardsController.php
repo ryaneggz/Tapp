@@ -28,6 +28,16 @@ class TimecardsController extends Controller
         return view('timecards.create');
     }
 
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function kiosk()
+    {
+        return view('timecards.kiosk');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
