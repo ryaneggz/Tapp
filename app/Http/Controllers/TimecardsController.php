@@ -128,6 +128,9 @@ class TimecardsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $timecard = Timecard::find($id);
+        $timecard->delete();
+
+        return redirect('/timecards')->with('success', 'Timecard Removed');
     }
 }

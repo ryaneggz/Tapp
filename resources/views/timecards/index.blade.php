@@ -16,6 +16,11 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
+              <div class="container">
+                <div class='col-4 center'>
+                  @include('inc.messages')
+                </div>
+              </div>
               <!-- RECENT SHIFTS -->
 							<div class="panel">
                 <div class="panel-heading">

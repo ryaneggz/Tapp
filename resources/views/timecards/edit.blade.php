@@ -50,9 +50,6 @@
                       </div>
                     </div>
                   {{ Form::close() }}
-                  <div class='col'>
-                    @include('inc.messages')
-                  </div>
                 </div>
               </div>
               <!-- END ENTER TIMECARD PANEL -->
