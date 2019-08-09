@@ -4,6 +4,7 @@
       <ul class="nav">
         <li><a href="/dashboard" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
         <li><a href="/timecards" class=""><i class="lnr lnr-alarm"></i> <span>Timecards</span></a></li>
+        <li><a href="/summaries" class=""><i class="lnr lnr-pencil"></i> <span>Summaries</span></a></li>
         <li>
           <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Settings</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
           <div id="subPages" class="collapse ">
@@ -11,6 +12,7 @@
               <li><a href="/profile" class="">Profile</a></li>
               <li><a href="/timecards/kiosk" class="">Kiosk</a></li>
               <li><a href="/timecards/create" class="">Add Timecard</a></li>
+              <li><a href="/summaries/create" class="">Create Summary</a></li>
               <li><a href="/login" class="">Login</a></li>
               <li><a href="/lock" class="">Lockscreen</a></li>
             </ul>

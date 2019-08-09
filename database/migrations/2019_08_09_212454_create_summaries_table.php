@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTimecardsTable extends Migration
+class CreateSummariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateTimecardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('timecards', function (Blueprint $table) {
+        Schema::create('summaries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('employee_id');
-            $table->integer('time_in');
-            $table->integer('time_out');
-            $table->integer('total_time');
-            $table->longText('shift_summary')->nullable();;
+            $table->mediumText('body');
             $table->timestamps();
         });
     }
@@ -31,7 +27,7 @@ class CreateTimecardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('timecards');
+        Schema::dropIfExists('summaries');
     }
 
     /**
@@ -44,13 +40,13 @@ class CreateTimecardsTable extends Migration
         return $this->belongsTo('App\Employee');
     }
 
-    /**
+     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function summary()
+    public function timecard()
     {
-        return $this->belongsTo('App\Summary');
+        return $this->belongsTo('App\Timecard');
     }
 }

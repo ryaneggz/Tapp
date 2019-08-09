@@ -48,7 +48,17 @@ class CreateEmployeesTable extends Migration
      */
     public function timecard()
     {
-        return $this->hasMany('App\Timecards');
+        return $this->hasMany('App\Timecard');
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function summary()
+    {
+        return $this->hasMany('App\Summary');
     }
 
     /**
