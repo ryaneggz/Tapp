@@ -45,6 +45,7 @@
                         {{ Form::time('time_out', date('h:i', $timecard->time_out), ['class'=>'form-control']) }}
                       </div>
                       <div class="col">
+                      {{ Form::hidden('_method', 'PUT') }}
                       {{ Form::submit('Submit', ['class'=>'form-control']) }}
                       </div>
                     </div>
