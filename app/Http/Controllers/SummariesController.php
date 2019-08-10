@@ -14,11 +14,11 @@ class SummariesController extends Controller
      */
     public function index()
     {
-        $summaries = Summary::orderBy('created_at', 'desc');
+        $summaries = Summary::orderBy('created_at','desc')->paginate(10);
         return view('summaries.index')->with('summaries', $summaries);
     }
 
-    /**
+    /** 
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -47,7 +47,8 @@ class SummariesController extends Controller
      */
     public function show($id)
     {
-        //
+        $summary = Summary::find($id);
+        return view('summaries.show')->with('summary', $summary);
     }
 
     /**

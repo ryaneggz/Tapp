@@ -20,8 +20,8 @@
               <!-- Timecard Data -->
               <h1>This is the Timecard ID: {{$timecard->id}}</h1>
               <h3>This is the Employed ID: {{$timecard->employee_id}}</h3>
-              <h3>This is the Time In: {{ date('n-d-y | g:i:s A', $timecard->time_in) }}</h3>
-              <h3>This is the Time Out: {{ date('n-d-y | g:i:s A',$timecard->time_out) }}</h3>
+              <h3>This is the Time In: {{ date('n/d/y | g:i A', $timecard->time_in) }}</h3>
+              <h3>This is the Time Out: {{ date('n/d/y | g:i A',$timecard->time_out) }}</h3>
               <h3>This is the Total Time: {{ gmdate('H:i:s', $timecard->total_time) }}</h3>
               <a href="/timecards/{{$timecard->id}}/edit" class="btn btn-primary">Edit</a>
 

@@ -16,10 +16,11 @@ Route::get('/', 'PagesController@index');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/lock', 'PagesController@lock');
 Route::get('/dashboard', 'PagesController@dashboard');
-
-// Creates routes for all of this resources functions
-Route::resource('timecards', 'TimecardsController');
 Route::get('/timecards/kiosk', 'TimecardsController@kiosk');
 
-// Creates routes for all of this resources functions
+// Timecard CRUD
+Route::resource('timecards', 'TimecardsController');
+
+
+// Summary CRUD
 Route::resource('summaries', 'SummariesController');

@@ -15,27 +15,18 @@
       <div class="main-content">
         <div class="container-fluid">
           <div class="row">
-              <!-- MESSAGES -->
-              <div class="container">
-                @include('inc.messages')
-              </div>
-              <!-- END MESSAGES -->
-              <div class="container">
-                @if(count($summaries) > 0)
-                  @foreach($summaries as $summary)
-                    <div class="well col-sm-12">
-                      <h3><a href="/summaries/{{$summary->id}}">{{$summary->body}}</a></h3>
-                      <small>Written on {{$summary->created_at}}</small>
-                    </div>
-                  @endforeach
-                  {{$summaries->links()}}
-                @else
-                  <p>No posts found</p>
-                @endif
-              </div>
+            <div class="col-md-12">
+              
+              <!-- Timecard Data -->
+              <h1>This is the Summary ID: {{$summary->id}}</h1>
+              <h3>This is the Summary Body: {{$summary->body}}</h3>
+              <h3>This is the created at time: {{$summary->created_at}}</h3>
+              <a href="/summaries/{{$summary->id}}/edit" class="btn btn-primary">Edit</a>
+
             </div>
           </div>
         </div>
+      </div>
       <!-- END MAIN CONTENT -->
     </div>
     <!-- END MAIN -->
