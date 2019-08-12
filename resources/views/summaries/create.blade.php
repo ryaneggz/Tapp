@@ -15,23 +15,29 @@
       <div class="main-content">
         <div class="container-fluid">
           <div class="row">
-            <!-- MESSAGES -->
-            <div class="container">
-              @include('inc.messages')
-            </div>
-            <!-- END MESSAGES -->
-
             <div class="col-md-12">
-              <h1>Create Post</h1>
-              {{ Form::open(['action' => 'SummariesController@store', 'method' => 'POST']) }}
-                <div class='form-group'>
-                  
-                </div>
-              {{ Form::close() }}
+              <!-- MESSAGES -->
+              <div class="container-fluid">
+                @include('inc.messages')
+              </div>
+              <!-- END MESSAGES -->
+
+              <!-- Summary Form -->
+              <div class="col-md-12">
+                <h1>Create Post</h1>
+                {{ Form::open(['action' => 'SummariesController@store', 'method' => 'POST']) }}
+                  <div class='form-group'>
+                    {{ Form::label('employee', 'Employee') }}
+                    {{ Form::text('body', '', ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
+                  </div>
+                {{ Form::close() }}
+              </div>
+              <!-- End Summary Form -->
+
             </div>
-              
           </div>
         </div>
+      </div>
       <!-- END MAIN CONTENT -->
     </div>
     <!-- END MAIN -->

@@ -67,7 +67,9 @@
 														</tr>
 													@endforeach
 													@else
-													<td>No Timecards Found</td>
+													<tr scope="row">
+														<td>No records found</td>
+													</tr>
 												@endif
 												<!-- END TIMECARD TABLE -->
 
