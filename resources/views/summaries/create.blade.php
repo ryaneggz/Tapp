@@ -21,20 +21,15 @@
             </div>
             <!-- END MESSAGES -->
 
-            <div class="container">
-              @if(count($summaries) > 0)
-                @foreach($summaries as $summary)
-                  <div class="well col-sm-12">
-                    <h3><a href="/summaries/{{$summary->id}}">{{$summary->employee_id}}</a></h3>
-                    <small>Written on {{$summary->created_at}}</small>
-                  </div>
-                @endforeach
-                {{$summaries->links()}}
-              @else
-                <p>No posts found</p>
-              @endif
+            <div class="col-md-12">
+              <h1>Create Post</h1>
+              {{ Form::open(['action' => 'SummariesController@store', 'method' => 'POST']) }}
+                <div class='form-group'>
+                  
+                </div>
+              {{ Form::close() }}
             </div>
-
+              
           </div>
         </div>
       <!-- END MAIN CONTENT -->

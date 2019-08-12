@@ -25,7 +25,7 @@ class SummariesController extends Controller
      */
     public function create()
     {
-        //
+        return view('summaries.create');
     }
 
     /**

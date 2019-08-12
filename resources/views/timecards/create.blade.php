@@ -93,7 +93,7 @@
                       </div>
                     </div>
                   {{ Form::close() }}
-                  <div class='col'>
+                  <div class='col'  >
                     @include('inc.messages')
                   </div>
                 </div>
