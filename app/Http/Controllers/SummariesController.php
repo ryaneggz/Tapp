@@ -70,7 +70,8 @@ class SummariesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $summary = Summary::find($id);
+        return view('summaries.edit')->with('summary', $summary);
     }
 
     /**
@@ -82,7 +83,18 @@ class SummariesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'employee_id' => 'required',
+            'body' => 'required',
+        ]);
+
+        // Create Summary
+        $summary = Summary::find($id);
+        $summary->employee_id = $request->input('employee_id');
+        $summary->body = $request->input('body');
+        $summary->save();
+
+        return redirect('/summaries')->with('success', 'Summary Updated');
     }
 
     /**
@@ -93,6 +105,10 @@ class SummariesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $summary = Summary::find($id);
+        $summary->delete();
+        
+        // After deleteing redirect back to object index
+        return redirect('/summaries')->with('success', 'Summary Removed');
     }
 }
