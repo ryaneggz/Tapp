@@ -26,10 +26,19 @@
               <div class="col-md-12">
                 <h1>Create Post</h1>
                 {{ Form::open(['action' => 'SummariesController@store', 'method' => 'POST']) }}
+
                   <div class='form-group'>
                     {{ Form::label('employee', 'Employee') }}
-                    {{ Form::text('body', '', ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
+                    {{ Form::text('employee_id', '', ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
                   </div>
+
+                  <div class='form-group'>
+                    {{ Form::label('body', 'Body') }}
+                    {{ Form::textarea('body', '', ['class' => 'form-control', 'placeholder' => 'Body Text']) }}
+                  </div>
+
+                  {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
+
                 {{ Form::close() }}
               </div>
               <!-- End Summary Form -->

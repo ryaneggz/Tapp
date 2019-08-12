@@ -36,7 +36,18 @@ class SummariesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'employee_id' => 'required',
+            'body' => 'required',
+        ]);
+
+        // Create Summary
+        $summary = new Summary;
+        $summary->employee_id = $request->input('employee_id');
+        $summary->body = $request->input('body');
+        $summary->save();
+
+        return redirect('/summaries')->with('success', 'Summary Created');
     }
 
     /**
