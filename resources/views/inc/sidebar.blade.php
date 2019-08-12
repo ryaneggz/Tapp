@@ -3,8 +3,26 @@
     <nav>
       <ul class="nav">
         <li><a href="/dashboard" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-        <li><a href="/timecards" class=""><i class="lnr lnr-alarm"></i> <span>Timecards</span></a></li>
+        <li><a href="/timecards" class=""><i class="lnr lnr-clock"></i> <span>Timecards</span></a></li>
         <li><a href="/summaries" class=""><i class="lnr lnr-pencil"></i> <span>Summaries</span></a></li>
+        {{-- <li>
+            <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-clock"></i> <span>Timecards</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subPages" class="collapse ">
+              <ul class="nav">
+                <li><a href="/timecards" class="">View Timecards</a></li>
+                <li><a href="/timecards/create" class="">Add Timecard</a></li>
+              </ul>
+            </div>
+          <li>
+        <li>
+          <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pencil"></i> <span>Summaries</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <div id="subPages" class="collapse ">
+            <ul class="nav">
+              <li><a href="/summaries" class="">View Summaries</a></li>
+              <li><a href="/summaries/create" class="">Create Summary</a></li>
+            </ul>
+          </div>
+        <li> --}}
         <li>
           <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Settings</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
           <div id="subPages" class="collapse ">
