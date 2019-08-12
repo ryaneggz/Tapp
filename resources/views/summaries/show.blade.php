@@ -20,9 +20,9 @@
               <!-- Summary Data -->
               <a href="/summaries" class="btn btn-default">Go Back</a>
               <h1>This is the Summary ID: {{$summary->id}}</h1>
-              <h3>This is the Summary Employee #: {{$summary->employee_id}}</h3>
-              <h3>This is the Summary Body: {{$summary->body}}</h3>
-              <h3>This is the created at time: {{$summary->created_at}}</h3>
+              <h3>Employee ID: {{$summary->employee_id}}</h3>
+              <h3>Summary: {!!$summary->body!!}</h3>
+              <h3>Created on: {{$summary->created_at}}</h3>
               <a href="/summaries/{{$summary->id}}/edit" class="btn btn-primary">Edit</a>
               <!-- End Summary Data -->
 
