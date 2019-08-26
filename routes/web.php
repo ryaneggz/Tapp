@@ -24,3 +24,6 @@ Route::resource('timecards', 'TimecardsController');
 
 // Summary CRUD
 Route::resource('summaries', 'SummariesController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
