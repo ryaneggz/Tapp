@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Timecard;
+use App\Summary;
 
 class PagesController extends Controller
 {
@@ -28,8 +29,9 @@ class PagesController extends Controller
     }
 
     public function dashboard() {
+        $summaries = Summary::orderBy('id', 'desc')->get();
         $timecards = Timecard::orderBy('time_in', 'desc')->get();
-        return view('pages.dashboard')->with(['timecards' => $timecards]);
+        return view('pages.dashboard')->with(['timecards' => $timecards, 'summaries' => $summaries]);
     }
 
     public function tasks() {
