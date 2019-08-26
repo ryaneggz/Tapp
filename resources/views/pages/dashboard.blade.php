@@ -60,7 +60,7 @@
 											<tbody>
 
 												<!-- TIMECARD TABLE --> 
-												@if(count($timecards) > 1)
+												@if(count($timecards) > 0)
 													@foreach($timecards as $timecard)
 														<tr onClick='window.location.href="/timecards/{{$timecard->id}}";'>
 															<th scope="row">{{$timecard->employee_id}}</th><td>{{date('n-d-y | g:i:s A', $timecard->time_in)}}</td><td>{{date('n-d-y | g:i:s A', $timecard->time_out)}}</td><td>{{gmdate('H:i:s', $timecard->total_time)}}</td>
@@ -106,7 +106,8 @@
 													<p>
 													<span class="title">{{$summary->employee_id}}</span>
 													<span class="short-description">{!!$summary->body!!}</span>
-													<div class="date">{{$summary->created_at}}</div>
+													<br>
+													<span class="date">{{$summary->created_at}}</span>
 													</p>
 													<div class="controls">
 														<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
