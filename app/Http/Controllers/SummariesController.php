@@ -37,13 +37,13 @@ class SummariesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'employee_id' => 'required',
+            'employee_name' => 'required',
             'body' => 'required',
         ]);
 
         // Create Summary
         $summary = new Summary;
-        $summary->employee_id = $request->input('employee_id');
+        $summary->employee_name = $request->input('employee_name');
         $summary->body = $request->input('body');
         $summary->save();
 
@@ -84,13 +84,13 @@ class SummariesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'employee_id' => 'required',
+            'employee_name' => 'required',
             'body' => 'required',
         ]);
 
         // Create Summary
         $summary = Summary::find($id);
-        $summary->employee_id = $request->input('employee_id');
+        $summary->employee_name = $request->input('employee_name');
         $summary->body = $request->input('body');
         $summary->save();
 

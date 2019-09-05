@@ -101,7 +101,7 @@
 											@foreach($summaries as $summary)
 												<li>
 													<img src="assets/img/user1.png" alt="Avatar" class="img-circle pull-left avatar">
-												<p><a href="/summaries/{{$summary->id}}">{{$summary->employee_id}}</a> {!!$summary->body!!} <br><span class="timestamp pull-right">{{$summary->updated_at}}</span></p>
+												<p><a href="/summaries/{{$summary->id}}">{{$summary->employee_name}}</a> {!!$summary->body!!} <br><span class="timestamp pull-right">{{$summary->updated_at}}</span></p>
 												</li>
 											@endforeach
 												@else
