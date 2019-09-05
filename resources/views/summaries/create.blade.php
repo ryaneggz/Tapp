@@ -28,13 +28,13 @@
                 {{ Form::open(['action' => 'SummariesController@store', 'method' => 'POST']) }}
 
                   <div class='form-group'>
-                    {{ Form::label('employee', 'Employee') }}
-                    {{ Form::text('employee_id', '', ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
+                    {{ Form::label('employee', 'Employee Name') }}
+                    {{ Form::text('employee_name', '', ['class' => 'form-control', 'placeholder' => 'Employee Name']) }}
                   </div>
 
                   <div class='form-group'>
-                    {{ Form::label('body', 'Body') }}
-                    {{ Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text']) }}
+                    {{ Form::label('body', 'Summary') }}
+                    {{ Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Summary of todays duties']) }}
                   </div>
 
                   {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
