@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
 <!-- Styles -->
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<div class="container-fluid">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

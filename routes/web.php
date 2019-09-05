@@ -15,7 +15,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/lock', 'PagesController@lock');
-Route::get('/dashboard', 'PagesController@dashboard');
+Route::get('/dashboard', 'PagesController@dashboard')->middleware('auth');
 Route::get('/timecards/kiosk', 'TimecardsController@kiosk');
 
 // Timecard CRUD

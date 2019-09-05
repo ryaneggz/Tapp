@@ -15,11 +15,10 @@ class CreateTimecardsTable extends Migration
     {
         Schema::create('timecards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('employee_id');
+            $table->bigInteger('employee_id')->unsigned()->index();
             $table->integer('time_in');
             $table->integer('time_out');
             $table->integer('total_time');
-            $table->longText('shift_summary')->nullable();;
             $table->timestamps();
         });
     }
@@ -32,25 +31,5 @@ class CreateTimecardsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('timecards');
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function employee()
-    {
-        return $this->belongsTo('App\Employee');
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function summary()
-    {
-        return $this->belongsTo('App\Summary');
     }
 }

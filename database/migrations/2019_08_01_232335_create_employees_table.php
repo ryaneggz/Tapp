@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->bigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned()->index();
 
         });
     }
@@ -29,45 +29,5 @@ class CreateEmployeesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('employees');
-    }
-
-     /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
-
-     /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function timecard()
-    {
-        return $this->hasMany('App\Timecard');
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function summary()
-    {
-        return $this->hasMany('App\Summary');
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function cards()
-    {
-        return $this->hasMany('App\Cards');
     }
 }

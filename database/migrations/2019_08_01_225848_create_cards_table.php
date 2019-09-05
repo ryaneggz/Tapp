@@ -30,14 +30,4 @@ class CreateCardsTable extends Migration
     {
         Schema::dropIfExists('cards');
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function employee()
-    {
-        return $this->belongsTo('App\Employee');
-    }
 }

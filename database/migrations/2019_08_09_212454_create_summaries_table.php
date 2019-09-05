@@ -15,7 +15,7 @@ class CreateSummariesTable extends Migration
     {
         Schema::create('summaries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('employee_id');
+            $table->bigInteger('employee_id')->unsigned()->index();
             $table->mediumText('body');
             $table->timestamps();
         });
