@@ -114,6 +114,11 @@ class SummariesController extends Controller
     public function destroy($id)
     {
         $summary = Summary::find($id);
+
+        if(auth()->user()->id !== $summary->employee->user->id) {
+            return redirect('/summaries')->with('error', 'Unauthorized Page');
+        }
+
         $summary->delete();
         
         // After deleteing redirect back to object index
