@@ -24,15 +24,17 @@
               <h3>Employee Name: {{$summary->employee->user->name}}</h3>
               <h3>Summary: {!!$summary->body!!}</h3>
               <h3>Created on: {{$summary->created_at}}</h3>
-              <!-- Edit button -->
-              <a href="/summaries/{{$summary->id}}/edit" class="btn btn-default">Edit</a>
-              <!-- Delete button -->
-              {!!Form::open(['action' => ['SummariesController@destroy', $summary->id], 'method'=>'POST', 'class'=>'pull-right'])!!}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Delete', ['class'=>'btn btn-danger']) }}
-              {!!Form::close()!!}
-              <!-- End Summary Data -->
-
+              <hr>
+              @if(Auth::user()->id == $summary->employee->user->id)
+                <!-- Edit button -->
+                <a href="/summaries/{{$summary->id}}/edit" class="btn btn-default">Edit</a>
+                <!-- Delete button -->
+                {!!Form::open(['action' => ['SummariesController@destroy', $summary->id], 'method'=>'POST', 'class'=>'pull-right'])!!}
+                  {{ Form::hidden('_method', 'DELETE') }}
+                  {{ Form::submit('Delete', ['class'=>'btn btn-danger']) }}
+                {!!Form::close()!!}
+                <!-- End Summary Data -->
+              @endif
             </div>
           </div>
         </div>
