@@ -19,9 +19,9 @@ class TimecardsController extends Controller
      */
     public function index()
     {   
-        return Timecard::orderBy('time_in', 'desc')->paginate(30);
-        // $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
-        // return view('timecards.index')->with('timecards', $timecards);
+        // return Timecard::orderBy('time_in', 'desc')->paginate(30);
+        $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
+        return view('timecards.index')->with('timecards', $timecards);
     }
 
     /**
@@ -80,9 +80,9 @@ class TimecardsController extends Controller
      */
     public function show($id)
     {
-       return Timecard::find($id);
-    //    $timecard = Timecard::find($id);
-    //    return view('timecards.show')->with('timecard', $timecard);
+    //    return Timecard::find($id);
+       $timecard = Timecard::find($id);
+       return view('timecards.show')->with('timecard', $timecard);
 
     }
 
