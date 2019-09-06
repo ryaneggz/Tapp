@@ -43,6 +43,7 @@ class SummariesController extends Controller
 
         // Create Summary
         $summary = new Summary;
+        $summary->employee_id = $request->input('employee_id');
         $summary->employee_name = $request->input('employee_name');
         $summary->body = $request->input('body');
         $summary->save();
@@ -90,6 +91,7 @@ class SummariesController extends Controller
 
         // Create Summary
         $summary = Summary::find($id);
+        $summary->employee_id = $request->input('employee_id');
         $summary->employee_name = $request->input('employee_name');
         $summary->body = $request->input('body');
         $summary->save();

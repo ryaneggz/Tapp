@@ -25,7 +25,7 @@
               @if(count($summaries) > 0)
                 @foreach($summaries as $summary)
                   <div class="well col-sm-12">
-                    <h3><a href="/summaries/{{$summary->id}}">{{$summary->employee_id}}</a></h3>
+                    <h3><a href="/summaries/{{$summary->id}}">{{$summary->employee_name}}</a></h3>
                     <small>Written on {{$summary->created_at}}</small>
                   </div>
                 @endforeach
