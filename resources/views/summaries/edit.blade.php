@@ -33,11 +33,6 @@
                   </div>
 
                   <div class='form-group'>
-                    {{ Form::label('employee', 'Employee Name') }}
-                    {{ Form::text('employee_name', $summary->employee_name, ['class' => 'form-control', 'placeholder' => 'Employee Name']) }}
-                  </div>
-
-                  <div class='form-group'>
                     {{ Form::label('body', 'Body') }}
                     {{ Form::textarea('body', $summary->body, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text']) }}
                   </div>

@@ -7,6 +7,11 @@ use App\Summary;
 
 class SummariesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -37,14 +42,13 @@ class SummariesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'employee_name' => 'required',
+            'employee_id' => 'required',
             'body' => 'required',
         ]);
 
         // Create Summary
         $summary = new Summary;
         $summary->employee_id = $request->input('employee_id');
-        $summary->employee_name = $request->input('employee_name');
         $summary->body = $request->input('body');
         $summary->save();
 
@@ -72,6 +76,11 @@ class SummariesController extends Controller
     public function edit($id)
     {
         $summary = Summary::find($id);
+
+        if(auth()->user()->id !== $summary->employee->user->id) {
+            return redirect('/summaries')->with('error', 'Unauthorized Page');
+        }
+
         return view('summaries.edit')->with('summary', $summary);
     }
 
@@ -85,14 +94,11 @@ class SummariesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'employee_name' => 'required',
             'body' => 'required',
         ]);
 
         // Create Summary
         $summary = Summary::find($id);
-        $summary->employee_id = $request->input('employee_id');
-        $summary->employee_name = $request->input('employee_name');
         $summary->body = $request->input('body');
         $summary->save();
 

@@ -8,6 +8,11 @@ use App\Summary;
 
 class PagesController extends Controller
 {
+    // Blocks all logged out traffic except to..
+    public function __construct() {
+        $this->middleware('auth', ['except' => 'index']);
+    }
+
     public function index() {
         $data = [
             'title'=>'Tapp.me'

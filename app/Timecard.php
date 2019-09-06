@@ -11,10 +11,4 @@ class Timecard extends Model
     {
         return $this->belongsTo('App\Employee');
     }
-
-    
-    public function summary()
-    {
-        return $this->belongsTo('App\Summary');
-    }
 }

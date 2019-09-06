@@ -16,7 +16,6 @@ class CreateSummariesTable extends Migration
         Schema::create('summaries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned()->index();
-            $table->string('employee_name');
             $table->mediumText('body');
             $table->timestamps();
         });
@@ -30,25 +29,5 @@ class CreateSummariesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('summaries');
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function employee()
-    {
-        return $this->belongsTo('App\Employee');
-    }
-
-     /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function timecard()
-    {
-        return $this->belongsTo('App\Timecard');
     }
 }
