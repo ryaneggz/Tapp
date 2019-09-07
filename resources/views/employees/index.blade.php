@@ -31,7 +31,7 @@
                 @endforeach
                 {{$employees->links()}}
               @else
-                <p>No posts found</p>
+                <p>No Employees found</p>
               @endif
             </div>
 
