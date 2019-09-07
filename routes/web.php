@@ -24,6 +24,8 @@ Route::resource('timecards', 'TimecardsController');
 Route::resource('summaries', 'SummariesController');
 // Employee CRUD
 Route::resource('employees', 'EmployeesController');
+// User CRUD
+Route::resource('users', 'UsersController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

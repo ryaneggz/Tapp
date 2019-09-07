@@ -9,8 +9,8 @@
           <a href="#subPagesTimecards" data-toggle="collapse" class="collapsed"><i class="lnr lnr-clock"></i> <span>Timecards</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
           <div id="subPagesTimecards" class="collapse ">
             <ul class="nav">
-              <li><a href="/timecards" class=""><i class="lnr lnr-code"></i> <span>View Timecards</span></a></li>
-              <li><a href="/timecards/create" class=""><i class="lnr lnr-code"></i> <span>Create Timecard</span></a></li>
+              <li><a href="/timecards" class=""><i class="lnr lnr-menu-circle"></i> <span>View Timecards</span></a></li>
+              <li><a href="/timecards/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Timecard</span></a></li>
             </ul>
           </div>
         </li>
@@ -21,24 +21,35 @@
           <a href="#subPagesSummaries" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pencil"></i> <span>Summaries</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
           <div id="subPagesSummaries" class="collapse ">
             <ul class="nav">
-              <li><a href="/summaries" class=""><i class="lnr lnr-code"></i> <span>View Summaries</span></a></li>
-              <li><a href="/summaries/create" class=""><i class="lnr lnr-code"></i> <span>Create Summary</span></a></li>
+              <li><a href="/summaries" class=""><i class="lnr lnr-menu-circle"></i> <span>View Summaries</span></a></li>
+              <li><a href="/summaries/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Summary</span></a></li>
             </ul>
           </div>
         </li>
         <!-- End Summary Dropdown -->
 
-        <!-- Summary Dropdown -->
+        <!-- Employee Dropdown -->
         <li>
-          <a href="#subPagesEmployees" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pencil"></i> <span>Employees</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <a href="#subPagesEmployees" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Employees</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
           <div id="subPagesEmployees" class="collapse ">
             <ul class="nav">
-              <li><a href="/employees" class=""><i class="lnr lnr-code"></i> <span>View Employees</span></a></li>
-              <li><a href="/employees/create" class=""><i class="lnr lnr-code"></i> <span>Create Employee</span></a></li>
+              <li><a href="/employees" class=""><i class="lnr lnr-menu-circle"></i> <span>View Employees</span></a></li>
+              <li><a href="/employees/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Employee</span></a></li>
             </ul>
           </div>
         </li>
-        <!-- End Summary Dropdown -->
+        <!-- End Employee Dropdown -->
+
+        <!-- User Dropdown -->
+        <li>
+          <a href="#subPagesUsers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Users</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <div id="subPagesUsers" class="collapse ">
+            <ul class="nav">
+              <li><a href="/users" class=""><i class="lnr lnr-menu-circle"></i> <span>View Users</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- End User Dropdown -->
 
         <!-- Settings Dropdown -->
         <li>
@@ -47,6 +58,7 @@
             <ul class="nav">
               <li><a href="/profile" class="">Profile</a></li>
               <li><a href="/timecards/kiosk" class="">Kiosk</a></li>
+              {{-- <li><a href="/users" class="">Users</a></li> --}}
               <li><a href="/login" class="">Login</a></li>
               <li><a href="/lock" class="">Lockscreen</a></li>
             </ul>
