@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->string('card_number');
+            $table->string('card_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

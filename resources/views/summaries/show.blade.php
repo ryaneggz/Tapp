@@ -22,8 +22,9 @@
               <h2>This is the Summary ID: {{$summary->id}}</h2>
               <h3>Employee ID: {{$summary->employee_id}}</h3>
               <h3>Employee Name: {{$summary->employee->user->name}}</h3>
-              <h3>Summary: {!!$summary->body!!}</h3>
-              <h3>Created on: {{$summary->created_at}}</h3>
+              <div class="well"><p>{!!$summary->body!!}</p></div>
+              <h4>Created on: {{$summary->created_at}}</h4>
+              <h4>Updated on: {{$summary->updated_at}}</h4>
               <hr>
               @if(Auth::user()->id == $summary->employee->user->id)
                 <!-- Edit button -->

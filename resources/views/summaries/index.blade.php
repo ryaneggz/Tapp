@@ -26,7 +26,8 @@
                 @foreach($summaries as $summary)
                   <div class="well col-sm-12">
                     <h3><a href="/summaries/{{$summary->id}}">{{$summary->employee->user->name}}</a></h3>
-                    <small>Written on {{$summary->created_at}}</small>
+                    <small>Written on {{$summary->created_at}}</small><br>
+                    <small>Updated on {{$summary->updated_at}}</small>
                   </div>
                 @endforeach
                 {{$summaries->links()}}
