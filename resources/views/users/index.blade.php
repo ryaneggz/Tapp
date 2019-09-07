@@ -25,7 +25,7 @@
               @if(count($users) > 0)
                 @foreach($users as $user)
                   <div class="well col-sm-12">
-                    <h3><a href="/users/{{$user->id}}/edit">{{$user->email}}</a></h3>
+                    <h3><a href="/users/{{$user->id}}">{{$user->email}}</a></h3>
                     <small>Written on {{$user->created_at}}</small>
                   </div>
                 @endforeach
