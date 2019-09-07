@@ -51,7 +51,7 @@ class EmployeesController extends Controller
         // Create Summary
         $employee = new Employee;
 
-        $employee->user_id = $request->user_id;
+        $employee->user_id = $request->input('user_id');
         $employee->card_number = $request->input('card_number');
 
         $employee->save();
