@@ -18,7 +18,7 @@
             <div class="col-md-12">
               
               <!-- Timecard Data -->
-              <h1>This is the Timecard ID: {{$timecard->id}}</h1>
+              <h2>This is the Timecard ID: {{$timecard->id}}</h2>
               <h3>This is the Employee ID: {{$timecard->employee_id}}</h3>
               <h3>This is the Employee Name: {{$timecard->employee->user->name}}</h3>
               <h3>This is the Time In: {{ date('n/d/y | g:i A', $timecard->time_in) }}</h3>

@@ -19,7 +19,7 @@
               
               <!-- Summary Data -->
               <a href="/employees" class="btn btn-default">Go Back</a>
-              <h1>This is the Employee ID: {{$employee->id}}</h1>
+              <h2>This is the Employee ID: {{$employee->id}}</h2>
               <h3>User ID: {{$employee->user_id}}</h3>
               <h3>User Name: {{$employee->user->name}}</h3>
               <h3>Card Number: {{$employee->card_number}}</h3>
