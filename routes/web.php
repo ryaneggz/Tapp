@@ -20,10 +20,10 @@ Route::get('/timecards/kiosk', 'TimecardsController@kiosk');
 
 // Timecard CRUD
 Route::resource('timecards', 'TimecardsController');
-
-
 // Summary CRUD
 Route::resource('summaries', 'SummariesController');
+// Employee CRUD
+Route::resource('employees', 'EmployeesController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

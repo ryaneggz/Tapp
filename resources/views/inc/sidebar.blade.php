@@ -28,6 +28,18 @@
         </li>
         <!-- End Summary Dropdown -->
 
+        <!-- Summary Dropdown -->
+        <li>
+          <a href="#subPagesEmployees" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pencil"></i> <span>Employees</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <div id="subPagesEmployees" class="collapse ">
+            <ul class="nav">
+              <li><a href="/employees" class=""><i class="lnr lnr-code"></i> <span>View Employees</span></a></li>
+              <li><a href="/employees/create" class=""><i class="lnr lnr-code"></i> <span>Create Employee</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- End Summary Dropdown -->
+
         <!-- Settings Dropdown -->
         <li>
           <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Settings</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
