@@ -21,7 +21,7 @@
             </div>
             <!-- END MESSAGES -->
 
-            <div class="container">
+            <div class="container-fluid">
               <div class="col-sm-12">
 
                 <!-- TABLE HOVER -->
@@ -29,7 +29,7 @@
                   <div class="panel-heading">
                     <h3 class="panel-title">Employees</h3>
                   </div>
-                  <div class="panel-body">
+                  <div class="panel-body table-responsive">
                     <table class="table table-hover">
                       <thead>
                         <tr><th>#</th><th>Employee Name</th><th>Card Number</th><th>Created At</th></tr>
