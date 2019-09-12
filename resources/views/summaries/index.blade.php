@@ -32,7 +32,7 @@
                 @endforeach
                 {{$summaries->links()}}
               @else
-                <p>No posts found</p>
+                <p>No Summaries found</p>
               @endif
             </div>
 

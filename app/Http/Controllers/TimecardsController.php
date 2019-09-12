@@ -21,6 +21,7 @@ class TimecardsController extends Controller
     {   
         // return Timecard::orderBy('time_in', 'desc')->paginate(30);
         $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
+        
         return view('timecards.index')->with('timecards', $timecards);
     }
 
@@ -56,17 +57,27 @@ class TimecardsController extends Controller
         // Validate the store request
         $this->validate($request, [
             'employee_id' => 'required',
-            'time_in' => 'required',
-            'time_out' => 'required'
+            'clock_in' => 'required',
         ]);
         
+        $time_in = $request->input('in_date') . ' ' . $request->input('clock_in');
+        $time_out = $request->input('out_date') . ' ' . $request->input('clock_out');
 
+        return $time_in;
+        if(!isset($time_out) == '') {
+            return 'nothing here';
+        } else {
+            return $time_out;
+        }
+        
         // Create Timecard
         $timecard = new Timecard;
         $timecard->employee_id = $request->input('employee_id');
-        $timecard->time_in = strtotime($request->input('in_date') . ' ' . $request->input('time_in'));
-        $timecard->time_out = strtotime($request->input('out_date') . ' ' . $request->input('time_out'));
+        $timecard->time_in = $time_in;
+        $timecard->time_out = $time_out;
+        // return $timecard;
         $timecard->total_time = $timecard->time_out - $timecard->time_in;
+        
         $timecard->save();
 
         return redirect('/timecards')->with('success', 'Timecard Created');
@@ -111,7 +122,6 @@ class TimecardsController extends Controller
         $this->validate($request, [
             'employee_id' => 'required',
             'time_in' => 'required',
-            'time_out' => 'required'
         ]);
         
 

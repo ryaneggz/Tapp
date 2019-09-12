@@ -22,17 +22,38 @@
             <!-- END MESSAGES -->
 
             <div class="container">
-              @if(count($employees) > 0)
-                @foreach($employees as $employee)
-                  <div class="well col-sm-12">
-                    <h3><a href="/employees/{{$employee->id}}">{{$employee->user->name}}</a></h3>
-                    <small>Written on {{$employee->created_at}}</small>
+              <div class="col-sm-12">
+
+                <!-- TABLE HOVER -->
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Employees</h3>
                   </div>
-                @endforeach
-                {{$employees->links()}}
-              @else
-                <p>No Employees found</p>
-              @endif
+                  <div class="panel-body">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr><th>#</th><th>Employee Name</th><th>Card Number</th><th>Created At</th></tr>
+                      </thead>
+                      <tbody>
+                        @if(count($employees) > 0)
+                          @foreach($employees as $employee)
+                            
+                          <tr onClick='window.location.href="/employees/{{$employee->id}}";'>
+                            <th scope='row'>{{$employee->id}}</th><td>{{$employee->user->name}}</td><td>{{$employee->card_number}}</td><td>{{$employee->created_at}}</td>
+                          </tr>
+                            
+                          @endforeach
+                          {{$employees->links()}}
+                        @else
+                          <p>No employees found</p>
+                        @endif
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!-- END TABLE HOVER -->
+      
+              </div>
             </div>
 
           </div>

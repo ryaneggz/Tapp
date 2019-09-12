@@ -76,8 +76,8 @@
                       <div class="col">
                         {{ Form::label('time-in', 'Time-in') }} 
                         {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{ Form::text('in_date', '', ['class'=>'form-control', 'id'=>'datepicker', 'placeholder'=>'mm/dd/yyyy']) }}
-                        {{ Form::time('time_in', '', ['class'=>'form-control']) }}
+                        {{ Form::date('in_date', '', ['class'=>'form-control', 'placeholder'=>'mm/dd/yyyy']) }}
+                        {{ Form::time('clock_in', '', ['class'=>'form-control']) }}
                       </div>
                     </div>
 
@@ -85,8 +85,9 @@
                       <div class="col">
                         {{ Form::label('time-out', 'Time-out') }} 
                         {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{ Form::text('out_date', '', ['class'=>'form-control', 'id'=>'datepicker-2', 'placeholder'=>'mm/dd/yyyy']) }}
-                        {{ Form::time('time_out', '', ['class'=>'form-control']) }}
+                        {{-- {{ Form::date('out_date', '', ['class'=>'form-control', 'placeholder'=>'mm/dd/yyyy']) }} --}}
+                        <input type="date" name="out_date" class="form-control" placeholder="mm/dd/yyyy">
+                        <input type="time" name="clock_out" class="form-control">
                       </div>
                       <div class="col">
                       {{ Form::submit('Submit', ['class'=>'form-control']) }}
