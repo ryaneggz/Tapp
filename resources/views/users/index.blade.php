@@ -29,7 +29,7 @@
                   <div class="panel-heading">
                     <h3 class="panel-title">Users</h3>
                   </div>
-                  <div class="panel-body">
+                  <div class="panel-body table-responsive">
                     <table class="table table-hover">
                       <thead>
                         <tr><th>#</th><th>User</th><th>Email</th><th>Employee ID</th><th>Created at</th></tr>
