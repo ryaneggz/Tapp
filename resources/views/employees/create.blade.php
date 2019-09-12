@@ -28,8 +28,12 @@
                 {{ Form::open(['action' => 'EmployeesController@store', 'method' => 'POST']) }}
 
                   <div class='form-group'>
-                    {{ Form::label('user_id', 'User ID') }}
-                    {{ Form::number('user_id', '', ['class' => 'form-control', 'placeholder' => 'User ID']) }}
+                    {{ Form::label('user_id', 'Select User') }}
+                    <select class="form-control" name="user_id" placeholder="Select User">
+                      @foreach($users as $user)
+                        <option value={{$user->id}}>{{$user->name}}</option>
+                      @endforeach
+                    </select>
                   </div>
 
                   <div class='form-group'>

@@ -28,11 +28,6 @@
                 {{ Form::open(['action' => ['SummariesController@update', $summary->id], 'method' => 'POST']) }}
 
                   <div class='form-group'>
-                    {{ Form::label('employee', 'Employee') }}
-                    {{ Form::text('employee_id', $summary->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
-                  </div>
-
-                  <div class='form-group'>
                     {{ Form::label('body', 'Body') }}
                     {{ Form::textarea('body', $summary->body, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text']) }}
                   </div>

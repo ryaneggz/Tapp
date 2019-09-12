@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Employee;
+use App\User;
 
 class EmployeesController extends Controller
 {
@@ -20,8 +21,11 @@ class EmployeesController extends Controller
     public function index()
     {
         $employees = Employee::orderBy('id','asc')->paginate(10);
-        
-        return view('employees.index')->with('employees', $employees);
+        return view('employees.index')->with(
+            [
+                'employees' => $employees
+            ]
+        );
     }
 
     /**
@@ -30,10 +34,15 @@ class EmployeesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $employees = Employee::all();
-        // return $employee;
-        return view('employees.create')->with('employees', $employees);
+    {   
+        // Get list of Users
+        $users = User::all();
+
+        return view('employees.create')->with(
+            [
+                'users' => $users
+            ]
+        );
     }
 
     /**

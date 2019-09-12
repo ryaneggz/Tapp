@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Summary;
+use App\Employee;
 
 class SummariesController extends Controller
 {
@@ -30,7 +31,9 @@ class SummariesController extends Controller
      */
     public function create()
     {
-        return view('summaries.create');
+        $employees = Employee::all();
+    
+        return view('summaries.create')->with('employees', $employees);
     }
 
     /**
@@ -42,13 +45,12 @@ class SummariesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'employee_id' => 'required',
             'body' => 'required',
         ]);
 
         // Create Summary
         $summary = new Summary;
-        $summary->employee_id = $request->input('employee_id');
+        $summary->employee_id = auth()->user()->employee_id;
         $summary->body = $request->input('body');
         $summary->save();
 
@@ -76,12 +78,20 @@ class SummariesController extends Controller
     public function edit($id)
     {
         $summary = Summary::find($id);
+        $employee_id = $summary->employee_id;
+        $employees = Employee::all();
 
-        if(auth()->user()->id !== $summary->employee->user->id) {
+        if(auth()->user()->employee_id !== $summary->employee->id) {
             return redirect('/summaries')->with('error', 'Unauthorized Page');
         }
 
-        return view('summaries.edit')->with('summary', $summary);
+        return view('summaries.edit')->with(
+            [
+                'summary' => $summary,
+                'employee_id' => $employee_id,
+                'employees' => $employees
+            ]
+        );
     }
 
     /**
