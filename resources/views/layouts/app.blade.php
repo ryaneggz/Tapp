@@ -19,7 +19,6 @@
     <link rel="icon" type="image/png" sizes="96x96" href={{ asset("assets/img/favicon.png") }}>
     <!-- DATEPICKER -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
   </head>
 <body>
 

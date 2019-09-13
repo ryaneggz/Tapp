@@ -22,8 +22,10 @@
               <h3>This is the Employee ID: {{$timecard->employee_id}}</h3>
               {{-- <h3>This is the Employee Name: {{$timecard->employee->user->name}}</h3> --}}
               <h3>This is the Time In: {{ date('n/d/y | g:i A', $timecard->time_in) }}</h3>
-              <h3>This is the Time Out: {{ date('n/d/y | g:i A',$timecard->time_out) }}</h3>
-              <h3>This is the Total Time: {{ gmdate('H:i:s', $timecard->total_time) }}</h3>
+              @if($timecard->time_out > 0)
+                <h3>This is the Time Out: {{ date('n/d/y | g:i A',$timecard->time_out) }}</h3>
+                <h3>This is the Total Time: {{ gmdate('H:i:s', $timecard->total_time) }}</h3>
+              @endif
               <hr>
               <a href="/timecards/{{$timecard->id}}/edit" class="btn btn-primary">Edit</a>
 

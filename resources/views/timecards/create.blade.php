@@ -38,7 +38,7 @@
                         @if(count($timecards) > 0)
                           @foreach($timecards as $timecard)
                             <tr onClick='window.location.href="/timecards/{{$timecard->id}}";'>
-                              <th scope="row">{{$timecard->employee_id}}</th><td>{{date('n/d/y | g:i A', $timecard->time_in)}}</td><td>{{date('n/d/y | g:i A',$timecard->time_out)}}</td><td>{{gmdate('H:i:s',$timecard->total_time)}}</td>
+                              <th scope="row">{{$timecard->employee_id}}</th><td>{{date('n/d/y | g:i A', $timecard->time_in)}}</td><td>@if($timecard->time_out > 0){{date('n/d/y | g:i A',$timecard->time_out)}}@endif</td><td>@if($timecard->time_out > 0){{gmdate('H:i:s', $timecard->total_time)}}@endif</td>
                             </tr>
                           @endforeach
                           {{$timecards->links()}}
@@ -68,26 +68,25 @@
                     <div class="form-group">
                       <div class="col">
                         {{ Form::label('title', 'Employee ID') }} 
-                        {{ Form::text('employee_id', '', ['class' => 'form-control', 'placeholder' => 'ID #']) }}
+                        <select class="form-control" name="employee_id">
+                          @foreach($employees as $employee)
+                            <option value={{$employee->id}}>{{$employee->id}}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <div class="col">
                         {{ Form::label('time-in', 'Time-in') }} 
-                        {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{ Form::date('in_date', '', ['class'=>'form-control', 'placeholder'=>'mm/dd/yyyy']) }}
-                        {{ Form::time('clock_in', '', ['class'=>'form-control']) }}
+                        <input class="form-control" type="datetime-local" name="time_in">
                       </div>
                     </div>
 
                     <div class="form-group">
                       <div class="col">
-                        {{ Form::label('time-out', 'Time-out') }} 
-                        {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{-- {{ Form::date('out_date', '', ['class'=>'form-control', 'placeholder'=>'mm/dd/yyyy']) }} --}}
-                        <input type="date" name="out_date" class="form-control" placeholder="mm/dd/yyyy">
-                        <input type="time" name="clock_out" class="form-control">
+                        {{ Form::label('time_out', 'Time-out') }} 
+                        <input class="form-control" type="datetime-local" name="time_out">
                       </div>
                       <div class="col">
                       {{ Form::submit('Submit', ['class'=>'form-control']) }}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Timecard;
+use App\Employee;
 
 class TimecardsController extends Controller
 {
@@ -33,7 +34,15 @@ class TimecardsController extends Controller
     public function create()
     {
         $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
-        return view('timecards.create')->with('timecards', $timecards);
+        // Get list of employees
+        $employees = Employee::all();
+
+        return view('timecards.create')->with(
+            [
+                'timecards' => $timecards,
+                'employees' => $employees
+            ]
+        );
     }
 
      /**
@@ -57,27 +66,20 @@ class TimecardsController extends Controller
         // Validate the store request
         $this->validate($request, [
             'employee_id' => 'required',
-            'clock_in' => 'required',
-        ]);
-        
-        $time_in = $request->input('in_date') . ' ' . $request->input('clock_in');
-        $time_out = $request->input('out_date') . ' ' . $request->input('clock_out');
-
-        return $time_in;
-        if(!isset($time_out) == '') {
-            return 'nothing here';
-        } else {
-            return $time_out;
-        }
+        ]);    
         
         // Create Timecard
         $timecard = new Timecard;
-        $timecard->employee_id = $request->input('employee_id');
-        $timecard->time_in = $time_in;
-        $timecard->time_out = $time_out;
-        // return $timecard;
-        $timecard->total_time = $timecard->time_out - $timecard->time_in;
+        $timecard->employee_id = $request->employee_id;
+        $timecard->time_in = strtotime($request->time_in);
+        if(isset($request->time_out)) {
+            $timecard->time_out = strtotime($request->time_out);
+        } else {
+            $timecard->time_out = 0;
+        }
         
+        // return $timecard->time_out;
+        $timecard->total_time = $timecard->time_out - $timecard->time_in;
         $timecard->save();
 
         return redirect('/timecards')->with('success', 'Timecard Created');
@@ -124,12 +126,11 @@ class TimecardsController extends Controller
             'time_in' => 'required',
         ]);
         
-
-        // Create Timecard
+        // FInd Timecard
         $timecard = Timecard::find($id);
         $timecard->employee_id = $request->input('employee_id');
-        $timecard->time_in = strtotime($request->input('in_date') . ' ' . $request->input('time_in'));
-        $timecard->time_out = strtotime($request->input('out_date') . ' ' . $request->input('time_out'));
+        $timecard->time_in = $time_in;
+        $timecard->time_out = $time_out;
         $timecard->total_time = $timecard->time_out - $timecard->time_in;
         $timecard->save();
 

@@ -18,35 +18,31 @@
             <div class="col-md-12">
               <!-- ENTER TIMECARD PANEL -->
               <div class="panel">
-                <div class="panel-body table-responsive">
+                <div class="panel-body">
                   {{ Form::open(['action' => ['TimecardsController@update', $timecard->id], 'method' => 'POST']) }}
 
                     <div class="form-group">
                       <div class="col">
-                        {{ Form::label('title', 'Employee ID') }} 
-                        {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'ID #']) }}
+                        {{ Form::label('employee_id', 'Employee ID') }} 
+                        {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <div class="col">
-                        {{ Form::label('time-in', 'Time-in') }} 
-                        {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{ Form::text('in_date', date('m/d/Y', $timecard->time_in), ['class'=>'form-control', 'id'=>'datepicker', 'placeholder'=>'mm/dd/yyyy']) }}
-                        {{ Form::time('time_in', date('h:i', $timecard->time_in), ['class'=>'form-control']) }}
+                      <div class="col-">
+                        {{ Form::label('time_in', 'Time-in') }} 
+                        <input id="my_time_in" class="form-control" type="datetime-local" name="time_in">
                       </div>
                     </div>
 
                     <div class="form-group">
                       <div class="col">
                         {{ Form::label('time-out', 'Time-out') }} 
-                        {{-- {{ Form::selectMonth('January', ['type' => 'date', 'class' => 'form-control', 'placeholder' => 'Timecard']) }} --}}
-                        {{ Form::text('out_date', date('m/d/Y', $timecard->time_out), ['class'=>'form-control', 'id'=>'datepicker-2', 'placeholder'=>'mm/dd/yyyy']) }}
-                        {{ Form::time('time_out', date('h:i', $timecard->time_out), ['class'=>'form-control']) }}
+                        <input class="form-control" type="datetime-local" name="time_out">
                       </div>
                       <div class="col">
-                      {{ Form::hidden('_method', 'PUT') }}
-                      {{ Form::submit('Submit', ['class'=>'form-control']) }}
+                        {{ Form::hidden('_method', 'PUT') }}
+                        {{ Form::submit('Submit', ['class'=>'form-control']) }}
                       </div>
                     </div>
                   {{ Form::close() }}

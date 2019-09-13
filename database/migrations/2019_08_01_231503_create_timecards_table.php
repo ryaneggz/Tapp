@@ -17,8 +17,8 @@ class CreateTimecardsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned()->index();
             $table->integer('time_in');
-            $table->integer('time_out')->default(200);
-            $table->integer('total_time');
+            $table->integer('time_out')->default(0);
+            $table->integer('total_time')->nullable();
             $table->timestamps();
         });
     }
