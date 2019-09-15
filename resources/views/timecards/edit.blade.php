@@ -22,7 +22,12 @@
               <div class="form-group">
                 <div class="col">
                   {{ Form::label('employee_id', 'Employee ID') }} 
-                  {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
+                  {{-- {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }} --}}
+                  <select class="form-control" name="employee_id">
+                    @foreach($employees as $employee)
+                      <option value={{$employee->id}}>{{$employee->id}}</option>
+                    @endforeach
+                  </select>
                 </div>
               </div>
 

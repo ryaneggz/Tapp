@@ -111,11 +111,14 @@ class TimecardsController extends Controller
         $time_in = date('m/d/y | g:i:s A', $timecard->time_in);
         $time_out = date('m/d/y | g:i:s A', $timecard->time_out);
         // return $time_in;
+        $employees = Employee::all();
+
         return view('timecards.edit')->with(
             [
                 'timecard' => $timecard,
                 'time_in' => $time_in,
-                'time_out' => $time_out
+                'time_out' => $time_out,
+                'employees' => $employees
             ]
         );
     }
