@@ -109,8 +109,9 @@ class TimecardsController extends Controller
     {
         $timecard = Timecard::find($id);
         $time_in = date('m/d/y | g:i:s A', $timecard->time_in);
-        $time_out = date('m/d/y | g:i:s A', $timecard->time_out);
         // return $time_in;
+        $time_out = date('m/d/y | g:i:s A', $timecard->time_out);
+        // Get list of all employees
         $employees = Employee::all();
 
         return view('timecards.edit')->with(
@@ -118,7 +119,7 @@ class TimecardsController extends Controller
                 'timecard' => $timecard,
                 'time_in' => $time_in,
                 'time_out' => $time_out,
-                'employees' => $employees   
+                'employees' => $employees
             ]
         );
     }
@@ -141,7 +142,12 @@ class TimecardsController extends Controller
         $timecard = Timecard::find($id);
         $timecard->employee_id = $request->input('employee_id');
         $timecard->time_in = $timecard->time_in;
-        $timecard->time_out = strtotime($request->time_out);
+        if(isset($request->time_out)) {
+            $timecard->time_out = strtotime($request->time_out);
+        } else {
+            $timecard->time_out = 0;
+        }
+        
         // return $timecard->time_out;
         $timecard->total_time = $timecard->time_out - $timecard->time_in;
         $timecard->save();
