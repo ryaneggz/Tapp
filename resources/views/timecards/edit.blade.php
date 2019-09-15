@@ -16,6 +16,13 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
+                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                <script>
+                $( function() {
+                  $( "#datepicker" ).datepicker();
+                } );
+                </script>
               
               {{ Form::open(['action' => ['TimecardsController@update', $timecard->id], 'method' => 'POST']) }}
 
@@ -35,7 +42,7 @@
                 <div class="col-">
                   {{ Form::label('time_in', 'Time-in') }}
                   <pre><?php echo $time_in ?></pre>
-                  <input class="form-control" type="datetime-local" name="time_in" value={{$time_in}} novalidate placeholder={{$time_in}}>
+                  <input class="form-control" type="datetime-local" name="time_in" id="datepicker" value={{$time_in}} novalidate placeholder={{$time_in}}>
                 </div>
               </div>
 
