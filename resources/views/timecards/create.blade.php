@@ -79,14 +79,14 @@
                     <div class="form-group">
                       <div class="col">
                         {{ Form::label('time-in', 'Time-in') }} 
-                        <input class="form-control" type="datetime-local" name="time_in" value={{$timecard->time_in}}>
+                        <input class="form-control" type="datetime-local" name="time_in">
                       </div>
                     </div>
 
                     <div class="form-group">
                       <div class="col">
                         {{ Form::label('time_out', 'Time-out') }} 
-                        <input class="form-control" type="datetime-local" name="time_out" value={{$timecard->time_ou}}>
+                        <input class="form-control" type="datetime-local" name="time_out">
                       </div>
                       <div class="col">
                       {{ Form::submit('Submit', ['class'=>'form-control']) }}
