@@ -13,42 +13,41 @@
     <div class="main">
       <!-- MAIN CONTENT -->
       <div class="main-content">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <!-- ENTER TIMECARD PANEL -->
-              <div class="panel">
-                <div class="panel-body">
-                  {{ Form::open(['action' => ['TimecardsController@update', $timecard->id], 'method' => 'POST']) }}
+              
+              {{ Form::open(['action' => ['TimecardsController@update', $timecard->id], 'method' => 'POST']) }}
 
-                    <div class="form-group">
-                      <div class="col">
-                        {{ Form::label('employee_id', 'Employee ID') }} 
-                        {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="col-">
-                        {{ Form::label('time_in', 'Time-in') }} 
-                        <input id="my_time_in" class="form-control" type="datetime-local" name="time_in">
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <div class="col">
-                        {{ Form::label('time-out', 'Time-out') }} 
-                        <input class="form-control" type="datetime-local" name="time_out">
-                      </div>
-                      <div class="col">
-                        {{ Form::hidden('_method', 'PUT') }}
-                        {{ Form::submit('Submit', ['class'=>'form-control']) }}
-                      </div>
-                    </div>
-                  {{ Form::close() }}
+              <div class="form-group">
+                <div class="col">
+                  {{ Form::label('employee_id', 'Employee ID') }} 
+                  {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
                 </div>
               </div>
-              <!-- END ENTER TIMECARD PANEL -->
+
+              <div class="form-group">
+                <div class="col-">
+                  {{ Form::label('time_in', 'Time-in') }}
+                  <pre><?php echo $time_in ?></pre>
+                  <input class="form-control" type="datetime-local" name="time_in" value=<?= $time_in ?>>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col">
+                  {{ Form::label('time-out', 'Time-out') }}
+                  <pre><?php echo $time_out ?></pre>
+                  <input class="form-control" type="datetime-local" name="time_out" value=<?= $time_out ?>>
+                </div>
+                <br>
+                <div class="col">
+                  {{ Form::hidden('_method', 'PUT') }}
+                  {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
+                </div>
+              </div>
+            {{ Form::close() }}
+
             </div>
           </div>
         </div>

@@ -108,7 +108,16 @@ class TimecardsController extends Controller
     public function edit($id)
     {
         $timecard = Timecard::find($id);
-        return view('timecards.edit')->with('timecard', $timecard);
+        $time_in = date('m/d/y | g:i:s A', $timecard->time_in);
+        $time_out = date('m/d/y | g:i:s A', $timecard->time_out);
+        // return $time_in;
+        return view('timecards.edit')->with(
+            [
+                'timecard' => $timecard,
+                'time_in' => $time_in,
+                'time_out' => $time_out
+            ]
+        );
     }
 
     /**
@@ -123,14 +132,14 @@ class TimecardsController extends Controller
         // Validate the store request
         $this->validate($request, [
             'employee_id' => 'required',
-            'time_in' => 'required',
         ]);
         
         // FInd Timecard
         $timecard = Timecard::find($id);
         $timecard->employee_id = $request->input('employee_id');
-        $timecard->time_in = $time_in;
-        $timecard->time_out = $time_out;
+        $timecard->time_in = $timecard->time_in;
+        $timecard->time_out = strtotime($request->time_out);
+        // return $timecard->time_out;
         $timecard->total_time = $timecard->time_out - $timecard->time_in;
         $timecard->save();
 
