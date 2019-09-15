@@ -141,14 +141,19 @@ class TimecardsController extends Controller
         // FInd Timecard
         $timecard = Timecard::find($id);
         $timecard->employee_id = $request->input('employee_id');
+        // $timecard->time_in = date('m/d/y | g:i:s A', $timecard->time_in);
         $timecard->time_in = $timecard->time_in;
+
+        // Check to see if the request time_out field is set
         if(isset($request->time_out)) {
+            // If so return timestamp of date 
             $timecard->time_out = strtotime($request->time_out);
         } else {
+            // If not, set time_out to 0
             $timecard->time_out = 0;
         }
         
-        // return $timecard->time_out;
+    
         $timecard->total_time = $timecard->time_out - $timecard->time_in;
         $timecard->save();
 

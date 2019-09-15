@@ -42,7 +42,7 @@
                 <div class="col-">
                   {{ Form::label('time_in', 'Time-in') }}
                   <pre><?php echo $time_in ?></pre>
-                  <input class="form-control" type="datetime-local" name="time_in" value={{$time_in}}>
+                  <input class="form-control" type="datetime-local" name="time_in" value={{$timecard->time_in}}>
                 </div>
               </div>
 
@@ -50,7 +50,7 @@
                 <div class="col">
                   {{ Form::label('time-out', 'Time-out') }}
                   <pre><?php echo $time_out ?></pre>
-                  <input class="form-control" type="datetime-local" name="time_out" value={{$time_out}}>
+                  <input class="form-control" type="datetime-local" name="time_out" value={{$timecard->timeout}}>
                 </div>
                 <br>
                 <div class="col">
