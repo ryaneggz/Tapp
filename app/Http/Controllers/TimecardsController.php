@@ -118,7 +118,7 @@ class TimecardsController extends Controller
                 'timecard' => $timecard,
                 'time_in' => $time_in,
                 'time_out' => $time_out,
-                'employees' => $employees
+                'employees' => $employees   
             ]
         );
     }
