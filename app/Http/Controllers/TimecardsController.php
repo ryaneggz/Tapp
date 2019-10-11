@@ -45,16 +45,6 @@ class TimecardsController extends Controller
         );
     }
 
-     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function kiosk()
-    {
-        return view('timecards.kiosk');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -70,16 +60,18 @@ class TimecardsController extends Controller
         
         // Create Timecard
         $timecard = new Timecard;
+        // return 'STOPPED';
         $timecard->employee_id = $request->employee_id;
         $timecard->time_in = strtotime($request->time_in);
         if(isset($request->time_out)) {
             $timecard->time_out = strtotime($request->time_out);
+            $timecard->total_time = $timecard->time_out - $timecard->time_in;
         } else {
             $timecard->time_out = 0;
+            $timecard->total_time = 0;
         }
         
         // return $timecard->time_out;
-        $timecard->total_time = $timecard->time_out - $timecard->time_in;
         $timecard->save();
 
         return redirect('/timecards')->with('success', 'Timecard Created');
@@ -138,23 +130,25 @@ class TimecardsController extends Controller
             'employee_id' => 'required',
         ]);
         
-        // FInd Timecard
+        // Create Timecard
         $timecard = Timecard::find($id);
-        $timecard->employee_id = $request->input('employee_id');
-        // $timecard->time_in = date('m/d/y | g:i:s A', $timecard->time_in);
-        $timecard->time_in = $timecard->time_in;
-
-        // Check to see if the request time_out field is set
-        if(isset($request->time_out)) {
-            // If so return timestamp of date 
+        // Set Employee ID
+        $timecard->employee_id = $request->employee_id;
+        // Set time_in equal to the request string timestamped
+        $timecard->time_in = strtotime($request->time_in);
+        // If request is greater than 0..
+        if($request->time_out > 0) {
+            // Set time_out equal to the request string timestamped
             $timecard->time_out = strtotime($request->time_out);
+            // Set time_out equal to the request string timestamped minus the time_in
+            $timecard->total_time = strtotime($request->time_out) - $timecard->time_in;
         } else {
-            // If not, set time_out to 0
+            // If value is zero, set values to zero
             $timecard->time_out = 0;
+            $timecard->total_time = 0;
         }
-        
     
-        $timecard->total_time = $timecard->time_out - $timecard->time_in;
+        // Save timecard
         $timecard->save();
 
         return redirect('/timecards')->with('success', 'Timecard Updated');
@@ -173,4 +167,28 @@ class TimecardsController extends Controller
 
         return redirect('/timecards')->with('success', 'Timecard Removed');
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function kiosk()
+    {
+        return view('timecards.kiosk');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function save(Request $request)
+    {
+        $employee = Employee::where('card_number', '=', $request->card_number);
+        return $employee;
+    }
+
+
 }

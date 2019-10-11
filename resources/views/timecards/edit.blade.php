@@ -13,53 +13,42 @@
     <div class="main">
       <!-- MAIN CONTENT -->
       <div class="main-content">
-        <div class="container-fluid">
+        <div class="container">
           <div class="row">
             <div class="col-md-12">
-                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                <script>
-                $( function() {
-                  $( "#datepicker" ).datepicker();
-                } );
-                </script>
-              
-              {{ Form::open(['action' => ['TimecardsController@update', $timecard->id], 'method' => 'POST']) }}
+              <!-- ENTER TIMECARD PANEL -->
+              <div class="panel">
+                <div class="panel-body">
+                  {{ Form::open(['action' => ['TimecardsController@update', $timecard->id], 'method' => 'POST']) }}
 
-              <div class="form-group">
-                <div class="col">
-                  {{ Form::label('employee_id', 'Employee ID') }} 
-                  {{-- {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }} --}}
-                  <select class="form-control" name="employee_id">
-                    @foreach($employees as $employee)
-                      <option value={{$employee->id}}>{{$employee->id}}</option>
-                    @endforeach
-                  </select>
+                    <div class="form-group">
+                      <div class="col">
+                        {{ Form::label('employee_id', 'Employee ID') }} 
+                        {{ Form::text('employee_id', $timecard->employee_id, ['class' => 'form-control', 'placeholder' => 'Employee ID']) }}
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-">
+                        {{ Form::label('time_in', 'Time-in') }}
+                        <input class="form-control" value={{ date('Y-m-d\TH:i', $timecard->time_in) }} type="datetime-local" name="time_in">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col">
+                        {{ Form::label('time-out', 'Time-out') }}
+                        <input class="form-control" @if($timecard->time_out > 0) value={{ date('Y-m-d\TH:i', $timecard->time_out) }} @endif type="datetime-local" name="time_out">
+                      </div>
+                      <div class="col">
+                        {{ Form::hidden('_method', 'PUT') }}
+                        {{ Form::submit('Submit', ['class'=>'form-control']) }}
+                      </div>
+                    </div>
+                  {{ Form::close() }}
                 </div>
               </div>
-
-              <div class="form-group">
-                <div class="col-">
-                  {{ Form::label('time_in', 'Time-in') }}
-                  <pre><?php echo $time_in ?></pre>
-                  <input class="form-control" type="datetime-local" name="time_in" value={{$timecard->time_in}}>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col">
-                  {{ Form::label('time-out', 'Time-out') }}
-                  <pre><?php echo $time_out ?></pre>
-                  <input class="form-control" type="datetime-local" name="time_out" value={{$timecard->timeout}}>
-                </div>
-                <br>
-                <div class="col">
-                  {{ Form::hidden('_method', 'PUT') }}
-                  {{ Form::submit('Submit', ['class'=>'btn btn-primary']) }}
-                </div>
-              </div>
-            {{ Form::close() }}
-
+              <!-- END ENTER TIMECARD PANEL -->
             </div>
           </div>
         </div>

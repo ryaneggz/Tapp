@@ -61,9 +61,9 @@
 	<!-- END MAIN -->
 	<footer>
 		<!-- SIGN IN FORM -->
-		<form action="kiosk.php" method="post">
-			<input styletype="text" id="kiosk" name="card_code" class="form-control" ><br>
-		</form>
+		{{ Form::open(['action' => 'TimecardsController@store', 'method' => 'POST']) }}
+			<input type="text" id="kiosk" name="card_number" class="form-control" ><br>
+		{{ Form::close() }}
 		<!-- END of SIGN IN FORM -->
 	</footer>
 	</div>

@@ -17,6 +17,7 @@ Route::get('/profile', 'PagesController@profile');
 Route::get('/lock', 'PagesController@lock');
 Route::get('/dashboard', 'PagesController@dashboard')->middleware('auth');
 Route::get('/timecards/kiosk', 'TimecardsController@kiosk');
+Route::get('/timecards/save', 'TimecardsController@save');
 
 // Timecard CRUD
 Route::resource('timecards', 'TimecardsController');
