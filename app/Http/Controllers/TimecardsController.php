@@ -53,28 +53,90 @@ class TimecardsController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the store request
-        $this->validate($request, [
-            'employee_id' => 'required',
-        ]);    
-        
-        // Create Timecard
-        $timecard = new Timecard;
-        // return 'STOPPED';
-        $timecard->employee_id = $request->employee_id;
-        $timecard->time_in = strtotime($request->time_in);
-        if(isset($request->time_out)) {
-            $timecard->time_out = strtotime($request->time_out);
-            $timecard->total_time = $timecard->time_out - $timecard->time_in;
-        } else {
-            $timecard->time_out = 0;
-            $timecard->total_time = 0;
-        }
-        
-        // return $timecard->time_out;
-        $timecard->save();
+        echo "THIS IS 1 HERE<br>";
 
-        return redirect('/timecards')->with('success', 'Timecard Created');
+        // Get the previous URL
+        $origin = url()->previous();
+        echo $origin . "<br>";
+
+        // Get the card_number from request
+        $card_number = $request->card_number;
+        echo $card_number . "<br>";
+
+        // If the origin is equal to /timecards/kiosk
+        if($origin === 'http://tapp.me/timecards/kiosk') {
+            echo 'IT is equal<br>';
+
+            // Validate the store request
+            $this->validate($request, [
+                'card_number' => 'required',
+            ]);
+
+            // Get the employee equal to the request input
+            $employee = Employee::where('card_number', '=', $card_number)->first();
+            echo $employee->id . "<br>";
+
+            $timecard = Timecard::where('employee_id', '=', $employee->id)->orderBy('id', 'desc')->first();
+            echo $timecard . '<br>';
+
+            if (isset($timecard)) {
+                echo 'Timecard is set';
+                
+                if($timecard->time_out > 0) {
+                    $timecard = new Timecard;
+                    $timecard->employee_id = $employee->id;
+                    $timecard->time_in = time();
+                    $timecard->time_out = 0;
+                    $timecard->total_time = 0;
+                    $timecard->save();
+                    echo 'TIME OUT WAS GREATER THAN 0 so CREATED NEW CARD</h1>';
+                    return redirect('/timecards/kiosk');
+                } else {
+                    $timecard = Timecard::find($timecard->id);
+                    $timecard->time_out = time();
+                    $timecard->total_time = $timecard->time_out - $timecard->time_in;
+                    $timecard->save();
+                    echo 'UPDATED the time card because time out was 0';
+                    return redirect('/timecards/kiosk');
+                }
+             
+            } else {
+                echo 'its not set';
+                $timecard = new Timecard;
+                $timecard->employee_id = $employee->id;
+                $timecard->time_in = time();
+                $timecard->time_out = 0;
+                $timecard->total_time = 0;
+                $timecard->save();
+                echo "TIME OUT WAS Not set for EMPLOYEE so CREATED ONE!!";
+                return redirect('/timecards/kiosk');
+            }
+
+        } else {
+
+            // Validate the store request
+            $this->validate($request, [
+                'card_number' => 'required',
+            ]);    
+            
+            // Create Timecard
+            $timecard = new Timecard;
+            // return 'STOPPED';
+            $timecard->employee_id = $request->employee_id;
+            $timecard->time_in = strtotime($request->time_in);
+            if(isset($request->time_out)) {
+                $timecard->time_out = strtotime($request->time_out);
+                $timecard->total_time = $timecard->time_out - $timecard->time_in;
+            } else {
+                $timecard->time_out = 0;
+                $timecard->total_time = 0;
+            }
+            
+            // return $timecard->time_out;
+            $timecard->save();
+
+            return redirect('/timecards')->with('success', 'Timecard Created');
+        }
     }
 
     /**
