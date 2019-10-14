@@ -53,19 +53,19 @@ class TimecardsController extends Controller
      */
     public function store(Request $request)
     {
-        echo "THIS IS 1 HERE<br>";
+        // echo "THIS IS 1 HERE<br>";
 
         // Get the previous URL
         $origin = url()->previous();
-        echo $origin . "<br>";
+        // echo $origin . "<br>";
 
         // Get the card_number from request
         $card_number = $request->card_number;
-        echo $card_number . "<br>";
+        // echo $card_number . "<br>";
 
         // If the origin is equal to /timecards/kiosk
         if($origin === 'http://tapp.me/timecards/kiosk') {
-            echo 'IT is equal<br>';
+            // echo 'IT is equal<br>';
 
             // Validate the store request
             $this->validate($request, [
@@ -74,13 +74,13 @@ class TimecardsController extends Controller
 
             // Get the employee equal to the request input
             $employee = Employee::where('card_number', '=', $card_number)->first();
-            echo $employee->id . "<br>";
+            // echo $employee->id . "<br>";
 
             $timecard = Timecard::where('employee_id', '=', $employee->id)->orderBy('id', 'desc')->first();
-            echo $timecard . '<br>';
+            // echo $timecard . '<br>';
 
             if (isset($timecard)) {
-                echo 'Timecard is set';
+                // echo 'Timecard is set';
                 
                 // If time out is greater than 0
                 if($timecard->time_out > 0) {
@@ -99,20 +99,20 @@ class TimecardsController extends Controller
                     $timecard->time_out = time();
                     $timecard->total_time = $timecard->time_out - $timecard->time_in;
                     $timecard->save();
-                    echo '<div id="footer">Youve Clocked OUT!<meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" /></div>';
+                    echo '<div id="footer">Youve Clocked OUT!</div><meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" />';
                     //return redirect('/timecards/kiosk');
                     return view('/timecards/kiosk');
                 }
              
             } else {
-                echo 'its not set';
+                // echo 'its not set';
                 $timecard = new Timecard;
                 $timecard->employee_id = $employee->id;
                 $timecard->time_in = time();
                 $timecard->time_out = 0;
                 $timecard->total_time = 0;
                 $timecard->save();
-                echo '<div id="footer">Welcome Newbie! Youve Clocked IN!<meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" /></div>';
+                echo '<div id="footer">Welcome Newbie! Youve Clocked IN!</div><meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" />';
                 
                 return view('/timecards/kiosk');
             }
@@ -121,7 +121,7 @@ class TimecardsController extends Controller
 
             // Validate the store request
             $this->validate($request, [
-                'card_number' => 'required',
+                'employee_id' => 'required',
             ]);    
             
             // Create Timecard
