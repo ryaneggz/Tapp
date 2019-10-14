@@ -92,8 +92,7 @@ class TimecardsController extends Controller
                     $timecard->total_time = 0;
                     $timecard->save();
                     echo '<div id="footer">Youve Been Clocked In!</div><meta http-equiv="refresh" content="5;URL=\'/timecards/kiosk\'" />';
-//                    return redirect('/timecards/kiosk');
-return view('/timecards/kiosk');
+                    return view('/timecards/kiosk');
                 } else {
                     $timecard = Timecard::find($timecard->id);
                     $timecard->time_out = time();
