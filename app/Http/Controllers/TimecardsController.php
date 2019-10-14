@@ -91,14 +91,15 @@ class TimecardsController extends Controller
                     $timecard->time_out = 0;
                     $timecard->total_time = 0;
                     $timecard->save();
-                    echo '<div id="footer">Youve Been Clocked In!</div><meta http-equiv="refresh" content="5;URL=\'/timecards/kiosk\'" />';
+                    echo '<div id="footer">Youve Been Clocked In!</div><meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" />';
+
                     return view('/timecards/kiosk');
                 } else {
                     $timecard = Timecard::find($timecard->id);
                     $timecard->time_out = time();
                     $timecard->total_time = $timecard->time_out - $timecard->time_in;
                     $timecard->save();
-                    echo '<div id="footer">Youve Clocked OUT!<meta http-equiv="refresh" content="5;URL=\'/timecards/kiosk\'" /></div>';
+                    echo '<div id="footer">Youve Clocked OUT!<meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" /></div>';
                     //return redirect('/timecards/kiosk');
                     return view('/timecards/kiosk');
                 }
@@ -111,7 +112,7 @@ class TimecardsController extends Controller
                 $timecard->time_out = 0;
                 $timecard->total_time = 0;
                 $timecard->save();
-                echo '<div id="footer">Welcome Newbie! Youve Clocked IN!<meta http-equiv="refresh" content="5;URL=\'/timecards/kiosk\'" /></div>';
+                echo '<div id="footer">Welcome Newbie! Youve Clocked IN!<meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" /></div>';
                 
                 return view('/timecards/kiosk');
             }
