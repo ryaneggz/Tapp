@@ -78,8 +78,6 @@ class TimecardsController extends Controller
 
             $timecard = Timecard::where('employee_id', '=', $employee->id)->orderBy('id', 'desc')->first();
             echo $timecard . '<br>';
-            echo "DIED BEFORE TIMECARD WAS CHECKED";
-            die();
 
             if (isset($timecard)) {
                 echo 'Timecard is set';
@@ -95,7 +93,6 @@ class TimecardsController extends Controller
                     $timecard->save();
                     echo '<div id="footer">Youve Been Clocked In!</div>';
                     echo '<meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" />';
-                    echo "Died From NEW CLOCK IN";
 
                     return view('/timecards/kiosk');
                 } else {
@@ -105,7 +102,6 @@ class TimecardsController extends Controller
                     $timecard->save();
                     echo '<div id="footer">Youve Clocked OUT!</div>';
                     echo '<meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" />';
-                    echo "Died From DURING CLOCK OUT";
                     
                     return view('/timecards/kiosk');
                 }
@@ -120,8 +116,6 @@ class TimecardsController extends Controller
                 $timecard->save();
                 echo '<div id="footer">Welcome Newbie! Youve Clocked IN!</div>';
                 echo '<meta http-equiv="refresh" content="3;URL=\'/timecards/kiosk\'" />';
-                echo "Died From Not SET";
-                die();
                 
                 return view('/timecards/kiosk');
             }

@@ -90,16 +90,6 @@
 	});
 	</script>
 
-	@if(isset($showclockedin))
-	<div id="footer">UPDATED tthe dicksas 0</div>
-	<meta http-equiv="refresh" content="3;URL='/timecards/kiosk'" />
-
-	@elseif(isset($showclockedout))
-	<div id="footer">UPDATED the time card because time out was 0</div>
-	<meta http-equiv="refresh" content="3;URL='/timecards/kiosk'" />
-	@endif
-
-
 </body>
 
 </html>
