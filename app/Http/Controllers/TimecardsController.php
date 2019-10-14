@@ -82,22 +82,26 @@ class TimecardsController extends Controller
             if (isset($timecard)) {
                 echo 'Timecard is set';
                 
+                // If time out is greater than 0
                 if($timecard->time_out > 0) {
+                    // Create new timecard
                     $timecard = new Timecard;
                     $timecard->employee_id = $employee->id;
                     $timecard->time_in = time();
                     $timecard->time_out = 0;
                     $timecard->total_time = 0;
                     $timecard->save();
-                    echo 'TIME OUT WAS GREATER THAN 0 so CREATED NEW CARD</h1>';
-                    return redirect('/timecards/kiosk');
+                    echo '<div id="footer">Youve Been Clocked In!</div><meta http-equiv="refresh" content="5;URL=\'/timecards/kiosk\'" />';
+//                    return redirect('/timecards/kiosk');
+return view('/timecards/kiosk');
                 } else {
                     $timecard = Timecard::find($timecard->id);
                     $timecard->time_out = time();
                     $timecard->total_time = $timecard->time_out - $timecard->time_in;
                     $timecard->save();
-                    echo 'UPDATED the time card because time out was 0';
-                    return redirect('/timecards/kiosk');
+                    echo '<div id="footer">Youve Clocked OUT!<meta http-equiv="refresh" content="5;URL=\'/timecards/kiosk\'" /></div>';
+                    //return redirect('/timecards/kiosk');
+                    return view('/timecards/kiosk');
                 }
              
             } else {
@@ -108,8 +112,9 @@ class TimecardsController extends Controller
                 $timecard->time_out = 0;
                 $timecard->total_time = 0;
                 $timecard->save();
-                echo "TIME OUT WAS Not set for EMPLOYEE so CREATED ONE!!";
-                return redirect('/timecards/kiosk');
+                echo '<div id="footer">Welcome Newbie! Youve Clocked IN!<meta http-equiv="refresh" content="5;URL=\'/timecards/kiosk\'" /></div>';
+                
+                return view('/timecards/kiosk');
             }
 
         } else {
