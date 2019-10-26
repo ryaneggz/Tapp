@@ -64,7 +64,7 @@ class TimecardsController extends Controller
         // echo $card_number . "<br>";
 
         // If the origin is equal to /timecards/kiosk
-        if($origin === 'https://tyme.ml/timecards/kiosk' || $origin === 'http://tapp.me/timecards/kiosk') {
+        if($origin === 'https://tyme.ml/timecards/kiosk') {
             // echo 'IT is equal<br>';
 
             // Validate the store request
