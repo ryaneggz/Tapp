@@ -76,8 +76,12 @@ class TimecardsController extends Controller
             $employee = Employee::where('card_number', '=', $card_number)->first();
             // echo $employee->id . "<br>";
 
-            $timecard = Timecard::where('employee_id', '=', $employee->id)->orderBy('id', 'desc')->first();
-            // echo $timecard . '<br>';
+            if(isset($employee)) {
+                $timecard = Timecard::where('employee_id', '=', $employee->id)->orderBy('id', 'desc')->first();
+                // echo $timecard . '<br>';
+            } else {
+                return redirect('/timecards/kiosk');
+            }
 
             if (isset($timecard)) {
                 // echo 'Timecard is set';
