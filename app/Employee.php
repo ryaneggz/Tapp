@@ -25,4 +25,9 @@ class Employee extends Model
     {
         return $this->hasMany('App\Cards');
     }
+
+    public function reports()
+    {
+        return $this->hasMany('App\Report');
+    }
 }

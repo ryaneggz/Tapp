@@ -27,6 +27,8 @@ Route::resource('kiosk', 'KioskController');
 Route::resource('summaries', 'SummariesController');
 // Employee CRUD
 Route::resource('employees', 'EmployeesController');
+// Report CRUD
+Route::resource('reports', 'ReportsController');
 // User CRUD
 Route::resource('users', 'UsersController');
 Auth::routes();

@@ -40,6 +40,17 @@
         </li>
         <!-- End Employee Dropdown -->
 
+        <!-- Report Dropdown -->
+        <li>
+          <a href="#subPagesReports" data-toggle="collapse" class="collapsed"><i class="lnr lnr-book"></i> <span>Reports</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <div id="subPagesReports" class="collapse ">
+            <ul class="nav">
+              <li><a href="/reports" class=""><i class="lnr lnr-menu-circle"></i> <span>View Reports</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <!-- End Report Dropdown -->
+
         <!-- User Dropdown -->
         <li>
           <a href="#subPagesUsers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Users</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
