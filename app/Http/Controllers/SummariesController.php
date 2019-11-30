@@ -31,9 +31,14 @@ class SummariesController extends Controller
      */
     public function create()
     {
-        $employees = Employee::all();
-    
-        return view('summaries.create')->with('employees', $employees);
+        $user_id = auth()->user()->id;
+        $employee = Employee::where('user_id', '=', $user_id)->first();
+        if($employee) {
+            $employees = Employee::all();
+            return view('summaries.create')->with('employees', $employees);
+        } else {
+            return redirect('/summaries');
+        }
     }
 
     /**
@@ -48,9 +53,13 @@ class SummariesController extends Controller
             'body' => 'required',
         ]);
 
+        $user_id = auth()->user()->id;
+        // Find the employee equal to user_id
+        $employee = Employee::where('user_id', '=', $user_id)->first();
+
         // Create Summary
         $summary = new Summary;
-        $summary->employee_id = auth()->user()->employee_id;
+        $summary->employee_id = $employee->id;
         $summary->body = $request->input('body');
         $summary->save();
 

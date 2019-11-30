@@ -21,7 +21,6 @@
               <a href="/users" class="btn btn-default">Go Back</a>
               <h1>This is the user ID: {{$user->id}}</h1>
               <h3>User ID: {{$user->name}}</h3>
-              <h3>Employee ID: {{$user->employee_id}}</h3>
               <h3>User Email: {{$user->email}}</h3>
               <h3>Created on: {{$user->created_at}}</h3>
               <h3>Updated on: {{$user->updated_at}}</h3>

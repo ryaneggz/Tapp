@@ -70,20 +70,6 @@ class DatabaseSeeder extends Seeder
         $x->total_time = '28800';
         $x->save();
 
-        $x = new Timecard;
-        $x->employee_id = 1;
-        $x->time_in = '1572854400';
-        $x->time_out = '1572883200';
-        $x->total_time = '28800';
-        $x->save();
-
-        $x = new Timecard;
-        $x->employee_id = 1;
-        $x->time_in = '1572940800';
-        $x->time_out = '1572969600';
-        $x->total_time = '28800';
-        $x->save();
-
         // Employee [2] Timecards
         $x = new Timecard;
         $x->employee_id = 2;

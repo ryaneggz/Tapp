@@ -21,7 +21,6 @@
             </div>
             <!-- END MESSAGES -->
 
-            <div class="container">
               <div class="col-sm-12">
 
                 <!-- TABLE HOVER -->
@@ -32,14 +31,14 @@
                   <div class="panel-body table-responsive">
                     <table class="table table-hover">
                       <thead>
-                        <tr><th>#</th><th>User</th><th>Email</th><th>Employee ID</th><th>Created at</th></tr>
+                        <tr><th>#</th><th>User</th><th>Email</th><th>Created at</th></tr>
                       </thead>
                       <tbody>
                         @if(count($users) > 0)
                           @foreach($users as $user)
                             
                           <tr onClick='window.location.href="/users/{{$user->id}}";'>
-                            <th scope='row'>{{$user->id}}</th><td>{{$user->name}}</td><td>{{$user->email}}</td><td>{{$user->employee_id}}</td><td>{{$user->created_at}}</td>
+                            <th scope='row'>{{$user->id}}</th><td>{{$user->name}}</td><td>{{$user->email}}</td><td>{{$user->created_at}}</td>
                           </tr>
                             
                           @endforeach
@@ -54,7 +53,6 @@
                 <!-- END TABLE HOVER -->
       
               </div>
-            </div>
 
           </div>
         </div>

@@ -27,15 +27,15 @@
 
                   <div class="row">
                     {{ Form::open(['action' => 'ReportsController@store', 'method' => 'POST']) }}
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-3">
                         <label for="pay_period_start">Period Start</label>
                         <input type="date" class="form-control" name="pay_period_start">
                       </div>
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-3">
                         <label for="pay_period_start">Period End</label>
                         <input type="date" class="form-control" name="pay_period_end">
                       </div>
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-3">
                         <div style="padding-top: 25px;">
                           {{ Form::submit('Generate Report', ['class'=>'btn btn-primary btn-block']) }}
                         </div>

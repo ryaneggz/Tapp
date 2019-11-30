@@ -63,7 +63,7 @@
 												@if(count($timecards) > 0)
 													@foreach($timecards as $timecard)
 														<tr onClick='window.location.href="/timecards/{{$timecard->id}}";'>
-															<th scope="row">{{$timecard->employee_id}}</th><td>{{date('n-d-y | g:i:s A', $timecard->time_in)}}</td><td>{{date('n-d-y | g:i:s A', $timecard->time_out)}}</td><td>{{gmdate('H:i:s', $timecard->total_time)}}</td>
+															<th scope="row">{{$timecard->employee_id}}</th><td>{{date('n-d-y @ g:i:s A', $timecard->time_in)}}</td><td>@if($timecard->time_out > 0){{date('n-d-y @ g:i A',$timecard->time_out)}}@endif</td><td>@if($timecard->time_out > 0){{gmdate('H:i:s', $timecard->total_time)}}@endif</td>
 														</tr>
 													@endforeach
 													@else

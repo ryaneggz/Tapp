@@ -53,7 +53,6 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'employee_id' => 'required',
             'email' => 'required',
         ]);
 
@@ -61,7 +60,6 @@ class UsersController extends Controller
         $user = User::find($id);
 
         $user->name = $request->input('name');
-        $user->employee_id = $request->input('employee_id');
         $user->email = $request->input('email');
 
         $user->save();

@@ -33,11 +33,6 @@
                 </div>
 
                 <div class='form-group'>
-                  {{ Form::label('employee_id', 'Employee ID') }}
-                  {{ Form::number('employee_id', $user->employee_id, ['class' => 'form-control', 'placeholder' => 'Enter employee id..']) }}
-                </div>
-
-                <div class='form-group'>
                   {{ Form::label('email', 'Email') }}
                   {{ Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Enter email..']) }}
                 </div>
