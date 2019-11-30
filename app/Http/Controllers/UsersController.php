@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Admin;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +20,14 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id','asc')->paginate(10);
-        return view('users.index')->with('users', $users);
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+            $users = User::orderBy('id','asc')->paginate(10);
+            return view('users.index')->with('users', $users);
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**
@@ -26,8 +38,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('users.show')->with('user', $user);
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+            $user = User::find($id);
+            return view('users.show')->with('user', $user);
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**
@@ -38,8 +56,14 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('users.edit')->with('user', $user);
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+            $user = User::find($id);
+            return view('users.edit')->with('user', $user);
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**

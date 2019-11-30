@@ -7,6 +7,7 @@ use App\Report;
 use App\Employee;
 use App\User;
 use App\Timecard;
+use App\Admin;
 
 class ReportsController extends Controller
 {
@@ -22,13 +23,19 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $reports = Report::orderBy('id', 'desc')->paginate(30);
-        // return $reports;
-        return view('reports.index')->with(
-            [
-                'reports' => $reports
-            ]
-        );
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+            $reports = Report::orderBy('id', 'desc')->paginate(30);
+            // return $reports;
+            return view('reports.index')->with(
+                [
+                    'reports' => $reports
+                ]
+            );
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**

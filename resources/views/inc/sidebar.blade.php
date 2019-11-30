@@ -51,16 +51,28 @@
         </li>
         <!-- End Report Dropdown -->
 
-        <!-- User Dropdown -->
+        <!-- Admin Dropdown -->
         <li>
-          <a href="#subPagesUsers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Users</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-          <div id="subPagesUsers" class="collapse ">
+          <a href="#subPagesAdmins" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Admins</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+          <div id="subPagesAdmins" class="collapse ">
             <ul class="nav">
-              <li><a href="/users" class=""><i class="lnr lnr-menu-circle"></i> <span>View Users</span></a></li>
+              <li><a href="/admins" class=""><i class="lnr lnr-menu-circle"></i> <span>View Admins</span></a></li>
+              <li><a href="/admins/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Admins</span></a></li>
             </ul>
           </div>
         </li>
-        <!-- End User Dropdown -->
+        <!-- End Admin Dropdown -->
+ 
+          <!-- User Dropdown -->
+          <li>
+            <a href="#subPagesUsers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Users</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subPagesUsers" class="collapse ">
+              <ul class="nav">
+                <li><a href="/users" class=""><i class="lnr lnr-menu-circle"></i> <span>View Users</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- End User Dropdown -->
 
         <!-- Settings Dropdown -->
         <li>

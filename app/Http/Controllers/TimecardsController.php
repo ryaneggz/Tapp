@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Timecard;
 use App\Employee;
+use App\Admin;
 
 class TimecardsController extends Controller
 {
@@ -33,16 +34,22 @@ class TimecardsController extends Controller
      */
     public function create()
     {
-        $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
-        // Get list of employees
-        $employees = Employee::all();
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+            $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
+            // Get list of employees
+            $employees = Employee::all();
 
-        return view('timecards.create')->with(
-            [
-                'timecards' => $timecards,
-                'employees' => $employees
-            ]
-        );
+            return view('timecards.create')->with(
+                [
+                    'timecards' => $timecards,
+                    'employees' => $employees
+                ]
+            );
+        } else {
+            return redirect('/timecards');
+        }
     }
 
     /**
@@ -157,10 +164,14 @@ class TimecardsController extends Controller
      */
     public function show($id)
     {
-    //    return Timecard::find($id);
-       $timecard = Timecard::find($id);
-       return view('timecards.show')->with('timecard', $timecard);
-
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+            $timecard = Timecard::find($id);
+            return view('timecards.show')->with('timecard', $timecard);
+        } else {
+            return redirect('/timecards');
+        }
     }
 
     /**

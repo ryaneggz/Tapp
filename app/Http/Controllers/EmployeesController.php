@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
 use App\User;
+use App\Admin;
 
 class EmployeesController extends Controller
 {
@@ -20,12 +21,20 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        $employees = Employee::orderBy('id','asc')->paginate(10);
-        return view('employees.index')->with(
-            [
-                'employees' => $employees
-            ]
-        );
+        // Check if User is Admin
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+            $employees = Employee::orderBy('id','asc')->paginate(10);
+            return view('employees.index')->with(
+                [
+                    'employees' => $employees
+                ]
+            );
+        // If not Admin redirect
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**
@@ -35,14 +44,23 @@ class EmployeesController extends Controller
      */
     public function create()
     {   
-        // Get list of Users
-        $users = User::all();
+        // Check if User is Admin
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
 
-        return view('employees.create')->with(
-            [
-                'users' => $users
-            ]
-        );
+            // Get list of Users
+            $users = User::all();
+
+            return view('employees.create')->with(
+                [
+                    'users' => $users
+                ]
+            );
+        // If not Admin redirect
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**
@@ -77,8 +95,18 @@ class EmployeesController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::find($id);
-        return view('employees.show')->with('employee', $employee);
+        // Check if User is Admin
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+
+            $employee = Employee::find($id);
+            return view('employees.show')->with('employee', $employee);
+
+        // If not Admin redirect
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**
@@ -89,8 +117,18 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        $employee = Employee::find($id);
-        return view('employees.edit')->with('employee', $employee);
+        // Check if User is Admin
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        if($admin) {
+
+            $employee = Employee::find($id);
+            return view('employees.edit')->with('employee', $employee);
+
+        // If not Admin redirect
+        } else {
+            return redirect('/dashboard');
+        }
     }
 
     /**

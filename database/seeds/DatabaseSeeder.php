@@ -5,6 +5,7 @@ use App\User;
 use App\Employee;
 use App\Timecard;
 use App\Report;
+use App\Admin;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+
+        $x = new User;
+        $x->name = 'Ryan Eggleston';
+        $x->email = 'ryan.eggleston@tmgcore.com';
+        $x->password = '$2y$10$OKuy4gBLMyQf0aMNo5zw2OtR5kwpPB8FJRW6nmfL2esjpia/NM3JC';
+        $x->save();
+
+        $x = new Admin;
+        $x->user_id = 1;
+        $x->save();
 
         // USERS
         $x = new User;

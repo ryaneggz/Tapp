@@ -48,7 +48,7 @@ class PagesController extends Controller
             ->orderBy('time_in', 'desc')
             ->get();
         } else {
-            echo 'User is NOT an employee';
+            echo null;
         }
         
         // Get all summaries for all users

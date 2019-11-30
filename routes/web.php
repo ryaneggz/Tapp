@@ -19,6 +19,7 @@ Route::get('/dashboard', 'PagesController@dashboard')->middleware('auth');
 Route::get('/timecards/kiosk', 'TimecardsController@kiosk');
 Route::get('/timecards/save', 'TimecardsController@save');
 
+
 // Timecard CRUD
 Route::resource('timecards', 'TimecardsController');
 // Timecard CRUD
@@ -29,6 +30,8 @@ Route::resource('summaries', 'SummariesController');
 Route::resource('employees', 'EmployeesController');
 // Report CRUD
 Route::resource('reports', 'ReportsController');
+// User CRUD
+Route::resource('admins', 'AdminsController');
 // User CRUD
 Route::resource('users', 'UsersController');
 Auth::routes();
