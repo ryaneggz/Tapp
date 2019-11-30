@@ -45,7 +45,7 @@
                           @endforeach
                           {{$employees->links()}}
                         @else
-                          <p>No employees found</p>
+                          <tr>No employees found</tr>
                         @endif
                       </tbody>
                     </table>

@@ -105,4 +105,18 @@ class ReportsController extends Controller
             ]
         );
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $report = Report::find($id);
+        $report->delete();
+
+        return redirect('/reports')->with('success', 'Report Removed');
+    }
 }
