@@ -20,34 +20,36 @@
                 @include('inc.messages')
               </div>
               <div class="col-md-12">
+
               <!-- RECENT REPORTS -->
 							<div class="panel">
-                <div class="panel-heading">
-                  <div class="d-flex flex-row-reverse">
+                <div class="panel-body">
+
+                  <div class="row">
                     {{ Form::open(['action' => 'ReportsController@store', 'method' => 'POST']) }}
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-2">
                         <label for="pay_period_start">Period Start</label>
                         <input type="date" class="form-control" name="pay_period_start">
                       </div>
-                      <div class="form-group col-md-4">
+                      <div class="form-group col-md-2">
                         <label for="pay_period_start">Period End</label>
                         <input type="date" class="form-control" name="pay_period_end">
                       </div>
-                      <div class="form-group col-md-4">
-                        <br>
-                        {{ Form::submit('Generate Report', ['class'=>'btn btn-primary btn-block']) }}
+                      <div class="form-group col-md-2">
+                        <div style="padding-top: 25px;">
+                          {{ Form::submit('Generate Report', ['class'=>'btn btn-primary btn-block']) }}
+                        </div>
                       </div>
                     {{ Form::close() }}
                   </div>
-                </div>
-                <div class="panel-body">
-                  <table class="table table-hover">
+
+                  <div class="container-fluid no-padding table-responsive">
+                    <table class="table table-hover">
                       <thead class="thead-primary">
                         <tr class="bg-info">
                             <th scope="col">ID#</th><th scope="col">Employee ID</th><th scope="col">Period Start</th><th scope="col">Period End</th><th scope="col">Total Hours</th>
                         </tr>
                       </thead>
-
                       <tbody>
                         <!-- REPORT TABLE --> 
                         @if(count($reports) > 0)
@@ -62,17 +64,14 @@
                         @endif
                         <!-- END REPORT TABLE -->
                       </tbody>
-
                     </table>
                   </div>
-                  <div class="panel-footer">
-                    <div class="row">
-                      <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
-                    </div>
-                  </div>
+
                 </div>
-                <!-- END RECENT REPORTS -->
               </div>
+              <!-- END RECENT REPORTS -->
+
+              
             </div>
           </div>
         </div>
