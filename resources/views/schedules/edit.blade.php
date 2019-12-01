@@ -244,7 +244,9 @@
                 
                 <div class="panel-footer">
                   <div class="row">
-                    <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
+                      <div class="col-xs-6">
+                        <span class="panel-note">Created on {{$schedule->updated_at}}</span>
+                      </div>
                     <div class="col-md-6 text-right">
                       {{ Form::hidden('_method', 'PUT') }}
                       {{ Form::submit('Save Schudule', ['class'=>'btn btn-success']) }}

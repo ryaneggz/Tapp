@@ -65,18 +65,18 @@
 														<td @if($sunday_evening) style="background: {{$sunday_evening->color}}"@endif>@if($sunday_evening) {{ $sunday_evening->user->name }} @endif</td>
 													</tr>
 												@endforeach
-													<div class="row">
 
+													<div class="row">
 														<div class="container-fluid">
-															<div class="col-md-3">
+															<div class="col-xs-3">
 																<h4>Weekly Schedule: [ {{$schedule->id}} ]</h4>
 															</div>
 															<div class="col pull-right">
 																{{$schedules->links()}}
 															</div>
 														</div>
-														
 													</div>
+													
 												@else
 												<td>No Schedules Found</td>
 											@endif
@@ -89,7 +89,7 @@
 									{{ Form::close() }}
 									<div class="panel-footer">
 										<div class="row">
-											<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i>Created on {{$schedule->created_at}}</span></div>
+											<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i>Created on{{$schedule->created_at}}</span></div>
 											<div class="col-md-6 text-right"><a href="/schedules/{{$schedule->id}}/edit" class="btn btn-primary">Edit Schedule</a></div>
 										</div>
 									</div>
