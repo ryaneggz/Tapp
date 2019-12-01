@@ -25,11 +25,13 @@ class PagesController extends Controller
     public function profile() {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         $data = [
             'title'=>'Profile Page',
             'user'=>'Brad',
-            'admin' => $admin
+            'admin' => $admin,
+            'employee' => $employee
 
         ];
         return view('pages.profile')->with($data);
