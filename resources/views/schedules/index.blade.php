@@ -80,7 +80,7 @@
 								<div class="panel-footer">
 									<div class="row">
 										<div class="col-xs-6">
-											<span class="panel-note">Created on {{$schedule->created_at}}</span>
+											<span class="panel-note">Created: {{$schedule->created_at}}</span>
 										</div>
 										<div class="col-md-6 text-right"><a href="/schedules/{{$schedule->id}}/edit" class="btn btn-primary">Edit Schedule</a></div>
 									</div>
