@@ -252,12 +252,13 @@
 									</table>
                 </div>
                 <div class="panel-footer">
-                  <div class="row">
-                    <div class="col-md-6">{{ Form::submit('Generate Schudule', ['class'=>'btn btn-primary']) }}</span></div>
-                    <div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Shifts</a></div>
+                    <div class="row">
+                    <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
+                    <div class="col-md-6 text-right">
+                      {{ Form::submit('Create Schudule', ['class'=>'btn btn-success']) }}
+                    </div>
                   </div>
-                </div>
-                {{ Form::close() }}
+                  {{ Form::close() }}
 							</div>
               <!-- END BORDERED TABLE -->
               

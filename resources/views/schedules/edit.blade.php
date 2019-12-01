@@ -247,7 +247,7 @@
                     <div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
                     <div class="col-md-6 text-right">
                       {{ Form::hidden('_method', 'PUT') }}
-                      {{ Form::submit('Save Schudule', ['class'=>'btn btn-primary']) }}
+                      {{ Form::submit('Save Schudule', ['class'=>'btn btn-success']) }}
                     </div>
                   </div>
                   {{ Form::close() }}
