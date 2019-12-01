@@ -26,13 +26,15 @@ class TimecardsController extends Controller
 
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         // return $admin;
         
         return view('timecards.index')->with(
             [
                 'timecards' => $timecards,
-                'admin' => $admin
+                'admin' => $admin,
+                'employee' => $employee
             ]
         );
     }
@@ -46,6 +48,7 @@ class TimecardsController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         if($admin) {
             $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
@@ -56,7 +59,8 @@ class TimecardsController extends Controller
                 [
                     'timecards' => $timecards,
                     'employees' => $employees,
-                    'admin' => $admin
+                    'admin' => $admin,
+                    'employee' => $employee
                 ]
             );
         } else {
@@ -178,13 +182,15 @@ class TimecardsController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         if($admin) {
             $timecard = Timecard::find($id);
             return view('timecards.show')->with(
                 [
                     'timecard' => $timecard,
-                    'admin' => $admin
+                    'admin' => $admin,
+                    'employee' => $employee
                 ]
             );
         } else {
@@ -203,6 +209,7 @@ class TimecardsController extends Controller
         // Get Admin info
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         $timecard = Timecard::find($id);
         $time_in = date('m/d/y | g:i:s A', $timecard->time_in);
@@ -217,7 +224,8 @@ class TimecardsController extends Controller
                 'time_in' => $time_in,
                 'time_out' => $time_out,
                 'employees' => $employees,
-                'admin' => $admin
+                'admin' => $admin,
+                'employee' => $employee
             ]
         );
     }

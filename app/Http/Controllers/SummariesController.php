@@ -23,12 +23,14 @@ class SummariesController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         $summaries = Summary::orderBy('created_at','desc')->paginate(10);
         return view('summaries.index')->with(
             [
                 'summaries' => $summaries,
-                'admin' => $admin
+                'admin' => $admin,
+                'employee' => $employee
             ]
         );
     }
@@ -49,7 +51,8 @@ class SummariesController extends Controller
             return view('summaries.create')->with(
                 [
                     'employees' => $employees,
-                    'admin' => $admin
+                    'admin' => $admin,
+                    'employee' => $employee
                 ]
             );
         } else {
@@ -92,12 +95,14 @@ class SummariesController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         $summary = Summary::find($id);
         return view('summaries.show')->with(
             [
                 'summary' => $summary,
-                'admin' => $admin
+                'admin' => $admin,
+                'employee' => $employee
             ]
         );
     }
@@ -115,10 +120,10 @@ class SummariesController extends Controller
         $employees = Employee::all();
 
         $user_id = auth()->user()->id;
-        $auth_employee = Employee::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
         $admin = Admin::where('user_id', '=', $user_id)->first();
 
-        if($auth_employee->id !== $summary->employee->id) {
+        if($employee->id !== $summary->employee->id) {
             return redirect('/summaries')->with('error', 'Unauthorized Page');
         }
 
@@ -127,7 +132,8 @@ class SummariesController extends Controller
                 'summary' => $summary,
                 'employee_id' => $employee_id,
                 'employees' => $employees,
-                'admin' => $admin
+                'admin' => $admin,
+                'employee' => $employee
             ]
         );
     }

@@ -66,7 +66,8 @@ class PagesController extends Controller
             [
                 'timecards' => $timecards, 
                 'summaries' => $summaries,
-                'admin' => $admin
+                'admin' => $admin,
+                'employee' => $employee,
             ]
         );
     }

@@ -24,7 +24,9 @@
           <div id="subPagesSummaries" class="collapse ">
             <ul class="nav">
               <li><a href="/summaries" class=""><i class="lnr lnr-menu-circle"></i> <span>View Summaries</span></a></li>
-              <li><a href="/summaries/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Summary</span></a></li>
+              @if($employee)
+                <li><a href="/summaries/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Summary</span></a></li>
+              @endif
             </ul>
           </div>
         </li>

@@ -24,13 +24,15 @@ class EmployeesController extends Controller
         // Check if User is Admin
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         if($admin) {
             $employees = Employee::orderBy('id','asc')->paginate(10);
             return view('employees.index')->with(
                 [
                     'employees' => $employees,
-                    'admin' => $admin
+                    'admin' => $admin,
+                    'employee' => $employee
                 ]
             );
         // If not Admin redirect
@@ -49,6 +51,7 @@ class EmployeesController extends Controller
         // Check if User is Admin
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
 
         if($admin) {
 
@@ -58,7 +61,8 @@ class EmployeesController extends Controller
             return view('employees.create')->with(
                 [
                     'users' => $users,
-                    'admin' => $admin
+                    'admin' => $admin,
+                    'employee' => $employee
                 ]
             );
         // If not Admin redirect
@@ -102,6 +106,7 @@ class EmployeesController extends Controller
         // Check if User is Admin
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($admin) {
 
             $employee = Employee::find($id);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Admin;
 use App\User;
+use App\Employee;
 
 class AdminsController extends Controller
 {
@@ -17,13 +18,16 @@ class AdminsController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
+
         if($admin) {
             
             $admins = Admin::orderBy('id','asc')->paginate(10);
             return view('admins.index')->with(
                 [
                     'admins' => $admins,
-                    'admin' => $admin
+                    'admin' => $admin,
+                    'employee' => $employee
                 ]
             );
 
@@ -43,6 +47,8 @@ class AdminsController extends Controller
         $user_id = auth()->user()->id;
         // Find Admin with Auth Users ID
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
+
         // If User is Admin
         if($admin) {
             // Get list of Users
@@ -51,7 +57,8 @@ class AdminsController extends Controller
             return view('admins.create')->with(
                 [
                     'users' => $users,
-                    'admin' => $admin
+                    'admin' => $admin,
+                    'employee' => $employee
                 ]
             );
         // If not redirect to dashboard
@@ -92,11 +99,17 @@ class AdminsController extends Controller
         $user_id = auth()->user()->id;
         // Find Admin with Auth Users ID
         $admin = Admin::where('user_id', '=', $user_id)->first();
+        $employee = Employee::where('user_id', '=', $user_id)->first();
         // If User is Admin
         if($admin) {
             // Find Admin by ID
             $admin = Admin::find($id);
-            return view('admins.show')->with('admin', $admin);
+            return view('admins.show')->with(
+                [
+                    'admin' => $admin,
+                    'employee' => $employee
+                ]
+            );
         // If not redirect to dashboard
         } else {
             return redirect('/dashboard');
