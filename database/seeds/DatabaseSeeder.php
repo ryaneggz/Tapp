@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $x = new Employee;
         $x->user_id = 1;
         $x->card_number = 'TMG-001-09062019';
+        $x->color = '#99CCFF';
         $x->save();
         // --- MASTER USER ---
 
@@ -51,6 +52,7 @@ class DatabaseSeeder extends Seeder
         $x = new Employee;
         $x->user_id = 2;
         $x->card_number = 'ADM-002-11302019';
+        $x->color = '#ff99ff';
         $x->save();
         // --- ADMIN USER ---
 
@@ -64,6 +66,7 @@ class DatabaseSeeder extends Seeder
         $x = new Employee;
         $x->user_id = 3;
         $x->card_number = 'EMP-003-11302019';
+        $x->color = '#ffcc66';
         $x->save();
         // --- EMPLOYEE USER ---
 
