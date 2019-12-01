@@ -37,6 +37,11 @@
                   {{ Form::text('card_number', $employee->card_number, ['class' => 'form-control', 'placeholder' => 'Enter card number..']) }}
                 </div>
 
+                <div class='form-group'>
+                  {{ Form::label('color', 'Hex Color') }}
+                  {{ Form::text('color', $employee->color, ['style' => 'background: ' . $employee->color . ';', 'class' => 'form-control', 'placeholder' => 'Enter hex color..']) }}
+                </div>
+
                 {{ Form::hidden('_method', 'PUT') }}
                 {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
 

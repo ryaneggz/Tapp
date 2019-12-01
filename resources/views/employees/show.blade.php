@@ -23,6 +23,7 @@
               <h3>User ID: {{$employee->user_id}}</h3>
               <h3>User Name: {{$employee->user->name}}</h3>
               <h3>Card Number: {{$employee->card_number}}</h3>
+              <h3>Color: {{$employee->color}}</h3>
               <h3>Created on: {{$employee->created_at}}</h3>
               <h3>Updated on: {{$employee->updated_at}}</h3>
               <hr>

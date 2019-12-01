@@ -40,7 +40,7 @@
                           <select class='form-control' name='monday_morning'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $monday_morning) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $monday_morning) style="background: {{$employee->color}}" selected style="background: {{$employee->color}}" @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -49,7 +49,7 @@
                           <select class='form-control' name='tuesday_morning'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $tuesday_morning) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $tuesday_morning) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -58,7 +58,7 @@
                           <select class='form-control' name='wednesday_morning'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $wednesday_morning) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $wednesday_morning) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -67,7 +67,7 @@
                           <select class='form-control' name='thursday_morning'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $thursday_morning) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $thursday_morning) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -76,7 +76,7 @@
                           <select class='form-control' name='friday_morning'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $friday_morning) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $friday_morning) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -85,7 +85,7 @@
                           <select class='form-control' name='saturday_morning'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $saturday_morning) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $saturday_morning) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -94,7 +94,7 @@
                           <select class='form-control' name='sunday_morning'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $sunday_morning) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $sunday_morning) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -109,7 +109,7 @@
                           <select class='form-control' name='monday_afternoon'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $monday_afternoon) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $monday_afternoon) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -118,7 +118,7 @@
                           <select class='form-control' name='tuesday_afternoon'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $tuesday_afternoon) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $tuesday_afternoon) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -127,7 +127,7 @@
                           <select class='form-control' name='wednesday_afternoon'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $wednesday_afternoon) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $wednesday_afternoon) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -136,7 +136,7 @@
                           <select class='form-control' name='thursday_afternoon'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $thursday_afternoon) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $thursday_afternoon) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -145,7 +145,7 @@
                           <select class='form-control' name='friday_afternoon'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $friday_afternoon) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $friday_afternoon) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -154,7 +154,7 @@
                           <select class='form-control' name='saturday_afternoon'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $saturday_afternoon) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $saturday_afternoon) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -163,7 +163,7 @@
                           <select class='form-control' name='sunday_afternoon'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $sunday_afternoon) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $sunday_afternoon)  style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -178,7 +178,7 @@
                           <select class='form-control' name='monday_evening'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                              <option @if($employee->id == $monday_evening) selected @endif value={{$employee->id}}>{{$employee->user->name}}</option>
+                              <option @if($employee->id == $monday_evening) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}</option>
                             @endforeach
                           </select>
                         </td>
@@ -186,7 +186,7 @@
                           <select class='form-control' name='tuesday_evening'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $tuesday_evening) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $tuesday_evening) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -195,7 +195,7 @@
                           <select class='form-control' name='wednesday_evening'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $wednesday_evening) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $wednesday_evening) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -204,7 +204,7 @@
                           <select class='form-control' name='thursday_evening'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $thursday_evening) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $thursday_evening) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -213,7 +213,7 @@
                           <select class='form-control' name='friday_evening'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $friday_evening) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $friday_evening) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -222,7 +222,7 @@
                           <select class='form-control' name='saturday_evening'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $saturday_evening) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $saturday_evening) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>
@@ -231,7 +231,7 @@
                           <select class='form-control' name='sunday_evening'>
                             <option value={{null}}></option>
                             @foreach($employees as $employee)
-                            <option @if($employee->id == $sunday_evening) selected @endif value={{$employee->id}}>{{$employee->user->name}}
+                            <option @if($employee->id == $sunday_evening) style="background: {{$employee->color}}" selected @endif value={{$employee->id}}>{{$employee->user->name}}
                             </option>
                             @endforeach
                           </select>

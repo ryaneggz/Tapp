@@ -89,6 +89,7 @@ class EmployeesController extends Controller
 
         $employee->user_id = $request->input('user_id');
         $employee->card_number = $request->input('card_number');
+        $employee->color = $request->input('color');
 
         $employee->save();
 
@@ -169,6 +170,7 @@ class EmployeesController extends Controller
 
         $employee->user_id = $request->input('user_id');
         $employee->card_number = $request->input('card_number');
+        $employee->color = $request->input('color');
 
         $employee->save();
 

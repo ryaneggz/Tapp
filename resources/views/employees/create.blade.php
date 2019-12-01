@@ -41,6 +41,11 @@
                     {{ Form::text('card_number', '', ['class' => 'form-control', 'placeholder' => 'Enter card number..']) }}
                   </div>
 
+                  <div class='form-group'>
+                    {{ Form::label('color', 'Hex Color') }}
+                    {{ Form::text('color', '', ['class' => 'form-control', 'placeholder' => '#000000']) }}
+                  </div>
+
                   {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
 
                 {{ Form::close() }}

@@ -32,14 +32,14 @@
                   <div class="panel-body table-responsive">
                     <table class="table table-hover">
                       <thead>
-                        <tr><th>#</th><th>Employee Name</th><th>Card Number</th><th>Created At</th></tr>
+                        <tr><th>#</th><th>Employee Name</th><th>Card Number</th><th>Hex Color</th><th>Created At</th></tr>
                       </thead>
                       <tbody>
                         @if(count($employees) > 0)
                           @foreach($employees as $employee)
                             
                           <tr onClick='window.location.href="/employees/{{$employee->id}}";'>
-                            <th scope='row'>{{$employee->id}}</th><td>{{$employee->user->name}}</td><td>{{$employee->card_number}}</td><td>{{$employee->created_at}}</td>
+                            <th scope='row'>{{$employee->id}}</th><td>{{$employee->user->name}}</td><td>{{$employee->card_number}}</td><td style="background: {{$employee->color}}">{{$employee->color}}</td><td>{{$employee->created_at}}</td>
                           </tr>
                             
                           @endforeach
