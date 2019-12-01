@@ -6,6 +6,7 @@ use App\Employee;
 use App\Timecard;
 use App\Report;
 use App\Admin;
+use App\Summary;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
+        // --- MASTER USER ---
         $x = new User;
         $x->name = 'Ryan Eggleston';
         $x->email = 'ryan.eggleston@tmgcore.com';
@@ -28,35 +30,71 @@ class DatabaseSeeder extends Seeder
         $x->user_id = 1;
         $x->save();
 
-        // USERS
-        $x = new User;
-        $x->name = 'John Smith';
-        $x->email = 'john@test.com';
-        $x->password = 'test1234';
-        $x->save();
-
-        $x = new User;
-        $x->name = 'Jane Doe';
-        $x->email = 'jane@test.com';
-        $x->password = 'test1234';
-        $x->save();
-
-        $x = new User;
-        $x->name = 'Jeremy Thompson';
-        $x->email = 'jeremy@test.com';
-        $x->password = 'test1234';
-        $x->save();
-        
-        // EMPLOYEES
         $x = new Employee;
         $x->user_id = 1;
         $x->card_number = 'TMG-001-09062019';
         $x->save();
+        // --- MASTER USER ---
+
+        // --- ADMIN USER ---
+        $x = new User;
+        $x->name = 'Admin';
+        $x->email = 'admin@test.com';
+        $x->password = '$2y$10$qZFbCsLhT5wwPvtDFNYp.OUI9pzKEc4Vyi7/D0hjIN7RetMD3U7aq';
+        $x->save();
+
+        $x = new Admin;
+        $x->user_id = 2;
+        $x->save();
 
         $x = new Employee;
         $x->user_id = 2;
-        $x->card_number = 'TMG-002-09062019';
+        $x->card_number = 'ADM-002-11302019';
         $x->save();
+        // --- ADMIN USER ---
+
+        // --- EMPLOYEE USER ---
+        $x = new User;
+        $x->name = 'Employee';
+        $x->email = 'employee@test.com';
+        $x->password = '$2y$10$DoZnE0Q1OGqKrT60GTtyReheeIfQqTtdn//2QwcT9sILFx7AzmP6S';
+        $x->save();
+
+        $x = new Employee;
+        $x->user_id = 3;
+        $x->card_number = 'EMP-003-11302019';
+        $x->save();
+        // --- EMPLOYEE USER ---
+
+        // --- USER ---
+        $x = new User;
+        $x->name = 'User';
+        $x->email = 'user@test.com';
+        $x->password = '$2y$10$VFQiTcw/AN.C6/lL4jVd7um9O6QaV2sjAWAwQ4fdal4UH4Ll5GPf.';
+        $x->save();
+        // --- USER ---
+
+        // --- SUMMARY ---
+        $x = new Summary;
+        $x->employee_id = 1;
+        $x->body = '<p>Lorem epsum this was the take and heres what happend</p>';
+        $x->save();
+       
+        $x = new Summary;
+        $x->employee_id = 2;
+        $x->body = '<p>Lorem epsum this was the EMPLOYEE 2 happend</p>';
+        $x->save();
+
+        $x = new Summary;
+        $x->employee_id = 3;
+        $x->body = '<p>Lorem epsum this was EMPLOYEE 3 what happend</p>';
+        $x->save();
+
+        $x = new Summary;
+        $x->employee_id = 1;
+        $x->body = '<p>Lorem epsum this was the AGAIN on the 5th what happend</p>';
+        $x->save();
+        // --- SUMMARY ---
 
 
         // Employee [1] Timecards
@@ -97,7 +135,7 @@ class DatabaseSeeder extends Seeder
         $x->save();
 
         $x = new Timecard;
-        $x->employee_id = 2;
+        $x->employee_id = 3;
         $x->time_in = '1572768110';
         $x->time_out = '1572796800';
         $x->total_time = '28300';
