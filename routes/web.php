@@ -26,6 +26,8 @@ Route::resource('timecards', 'TimecardsController');
 Route::resource('summaries', 'SummariesController');
 // Employee CRUD
 Route::resource('employees', 'EmployeesController');
+// Schedule CRUD
+Route::resource('schedules', 'SchedulesController');
 // Report CRUD
 Route::resource('reports', 'ReportsController');
 // User CRUD

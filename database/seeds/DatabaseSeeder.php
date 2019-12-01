@@ -7,6 +7,7 @@ use App\Timecard;
 use App\Report;
 use App\Admin;
 use App\Summary;
+use App\Schedule;
 
 class DatabaseSeeder extends Seeder
 {
@@ -139,6 +140,36 @@ class DatabaseSeeder extends Seeder
         $x->time_in = '1572768110';
         $x->time_out = '1572796800';
         $x->total_time = '28300';
+        $x->save();
+
+        // SCHEDULE
+        $x = new Schedule;
+        //Morning
+        $x->monday_morning = 1;
+        $x->tuesday_morning = 1;
+        $x->wednesday_morning = 1;
+        $x->thursday_morning = 1;
+        $x->friday_morning = 1;
+        $x->saturday_morning = 1;
+        $x->sunday_morning = 1;
+
+        //Afternoon
+        $x->monday_afternoon = 2;
+        $x->tuesday_afternoon = 2;
+        $x->thursday_afternoon = 2;
+        $x->friday_afternoon = 2;
+        $x->saturday_afternoon = 2;
+        $x->sunday_afternoon = 2;
+
+        // Evening
+        $x->monday_evening = 3;
+        $x->tuesday_evening = 3;
+        $x->wednesday_evening = 3;
+        $x->thursday_evening = 3;
+        $x->friday_evening = 3;
+        $x->saturday_evening = 3;
+        $x->sunday_evening = 3;
+
         $x->save();
     }
 }

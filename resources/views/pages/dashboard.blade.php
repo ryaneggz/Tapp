@@ -19,23 +19,63 @@
 
 							<!-- BORDERED TABLE -->
 							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">This weeks schedule</h3>
+									<div class="panel-body table-responsive">
+										<table class="table table-bordered text-center table-hover">
+											<thead>
+												<tr class="bg-info"><th>Shift</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th></tr>
+											</thead>
+											<tbody>
+	
+												<!-- TIMECARD TABLE --> 
+												@if(count($schedules) > 0)
+												@foreach($schedules as $schedule)
+													<tr onClick='window.location.href="/schedules/{{$schedule->id}}";'><th scope="col">Morning</th>
+														<td>@if($monday_morning) {{ $monday_morning->user->name }} @endif</td>
+														<td>@if($tuesday_morning) {{ $tuesday_morning->user->name }} @endif</td>
+														<td>@if($wednesday_morning) {{ $wednesday_morning->user->name }} @endif</td>
+														<td>@if($thursday_morning) {{ $thursday_morning->user->name }} @endif</td>
+														<td>@if($friday_morning) {{ $friday_morning->user->name }} @endif</td>
+														<td>@if($saturday_morning) {{ $saturday_morning->user->name }} @endif</td>
+														<td>@if($sunday_morning) {{ $sunday_morning->user->name }} @endif</td>
+													</tr>
+													<tr onClick='window.location.href="/schedules/{{$schedule->id}}";'><th scope="col">Afternoon</th>
+														<td>@if($monday_afternoon) {{ $monday_afternoon->user->name }} @endif</td>
+														<td>@if($tuesday_afternoon) {{ $tuesday_afternoon->user->name }} @endif</td>
+														<td>@if($wednesday_afternoon) {{ $wednesday_afternoon->user->name }} @endif</td>
+														<td>@if($thursday_afternoon) {{ $thursday_afternoon->user->name }} @endif</td>
+														<td>@if($friday_afternoon) {{ $friday_afternoon->user->name }} @endif</td>
+														<td>@if($saturday_afternoon) {{ $saturday_afternoon->user->name }} @endif</td>
+														<td>@if($sunday_afternoon) {{ $sunday_afternoon->user->name }} @endif</td>
+													</tr>
+													<tr onClick='window.location.href="/schedules/{{$schedule->id}}";'><th scope="col">Evening</th>
+														<td>@if($monday_evening) {{ $monday_evening->user->name }} @endif</td>
+														<td>@if($tuesday_evening) {{ $tuesday_evening->user->name }} @endif</td>
+														<td>@if($wednesday_evening) {{ $wednesday_evening->user->name }} @endif</td>
+														<td>@if($thursday_evening) {{ $thursday_evening->user->name }} @endif</td>
+														<td>@if($friday_evening) {{ $friday_evening->user->name }} @endif</td>
+														<td>@if($saturday_evening) {{ $saturday_evening->user->name }} @endif</td>
+														<td>@if($sunday_evening) {{ $sunday_evening->user->name }} @endif</td>
+													</tr>
+												@endforeach
+													{{$schedules->links()}}
+												@else
+												<td>No Schedules Found</td>
+											@endif
+											<!-- END TIMECARD TABLE -->
+											
+		
+											</tbody>
+										</table>
+									</div>
+									{{ Form::close() }}
+									<div class="panel-footer">
+										<div class="row">
+											<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
+											<div class="col-md-6 text-right"><a href="/schedules/{{$schedule->id}}/edit" class="btn btn-primary">Edit Schedule</a></div>
+										</div>
+									</div>
 								</div>
-								<div class="panel-body table-responsive">
-									<table class="table table-bordered text-center table-hover">
-										<thead>
-											<tr class="bg-info"><th>Shift</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th></tr>
-										</thead>
-										<tbody>
-											<tr><th scope="col">Morning</th><td>Steve</td><td>Jobs</td><td>off</td><td>off</td><td>off</td><td>off</td><td>off</td></tr>
-											<tr><th scope="col">Afternoon</th><td>Simon</td><td>Philips</td><td>off</td><td>off</td><td>off</td><td>off</td><td>off</td></tr>
-											<tr><th scope="col">Evening</th><td>Jane</td><td>Doe</td><td>off</td><td>off</td><td>off</td><td>off</td><td>off</td></tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<!-- END BORDERED TABLE -->
+								<!-- END BORDERED TABLE -->
 				
 						</div>
 					</div>

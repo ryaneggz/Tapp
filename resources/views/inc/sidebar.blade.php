@@ -47,6 +47,20 @@
         @endif
 
         @if($admin)
+        <!-- Employee Dropdown -->
+          <li>
+            <a href="#subPagesSchedules" data-toggle="collapse" class="collapsed"><i class="lnr lnr-calendar-full"></i> <span>Schedules</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subPagesSchedules" class="collapse ">
+              <ul class="nav">
+                <li><a href="/schedules" class=""><i class="lnr lnr-menu-circle"></i> <span>View Schedules</span></a></li>
+                <li><a href="/schedules/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Schedule</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- End Employee Dropdown -->
+        @endif
+
+        @if($admin)
           <!-- Report Dropdown -->
           <li>
             <a href="#subPagesReports" data-toggle="collapse" class="collapsed"><i class="lnr lnr-book"></i> <span>Reports</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
@@ -62,7 +76,7 @@
         @if($admin)
           <!-- Admin Dropdown -->
           <li>
-            <a href="#subPagesAdmins" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Admins</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <a href="#subPagesAdmins" data-toggle="collapse" class="collapsed"><i class="lnr lnr-eye"></i> <span>Admins</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
             <div id="subPagesAdmins" class="collapse ">
               <ul class="nav">
                 <li><a href="/admins" class=""><i class="lnr lnr-menu-circle"></i> <span>View Admins</span></a></li>
