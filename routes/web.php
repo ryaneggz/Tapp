@@ -22,8 +22,6 @@ Route::get('/timecards/save', 'TimecardsController@save');
 
 // Timecard CRUD
 Route::resource('timecards', 'TimecardsController');
-// Timecard CRUD
-Route::resource('kiosk', 'KioskController');
 // Summary CRUD
 Route::resource('summaries', 'SummariesController');
 // Employee CRUD

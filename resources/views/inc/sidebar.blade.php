@@ -10,7 +10,9 @@
           <div id="subPagesTimecards" class="collapse ">
             <ul class="nav">
               <li><a href="/timecards" class=""><i class="lnr lnr-menu-circle"></i> <span>View Timecards</span></a></li>
-              <li><a href="/timecards/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Timecard</span></a></li>
+              @if($admin)
+                <li><a href="/timecards/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Timecard</span></a></li>
+              @endif
             </ul>
           </div>
         </li>
@@ -28,41 +30,48 @@
         </li>
         <!-- End Summary Dropdown -->
 
-        <!-- Employee Dropdown -->
-        <li>
-          <a href="#subPagesEmployees" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Employees</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-          <div id="subPagesEmployees" class="collapse ">
-            <ul class="nav">
-              <li><a href="/employees" class=""><i class="lnr lnr-menu-circle"></i> <span>View Employees</span></a></li>
-              <li><a href="/employees/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Employee</span></a></li>
-            </ul>
-          </div>
-        </li>
-        <!-- End Employee Dropdown -->
+        @if($admin)
+          <!-- Employee Dropdown -->
+          <li>
+            <a href="#subPagesEmployees" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>Employees</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subPagesEmployees" class="collapse ">
+              <ul class="nav">
+                <li><a href="/employees" class=""><i class="lnr lnr-menu-circle"></i> <span>View Employees</span></a></li>
+                <li><a href="/employees/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Employee</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- End Employee Dropdown -->
+        @endif
 
-        <!-- Report Dropdown -->
-        <li>
-          <a href="#subPagesReports" data-toggle="collapse" class="collapsed"><i class="lnr lnr-book"></i> <span>Reports</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-          <div id="subPagesReports" class="collapse ">
-            <ul class="nav">
-              <li><a href="/reports" class=""><i class="lnr lnr-menu-circle"></i> <span>View Reports</span></a></li>
-            </ul>
-          </div>
-        </li>
-        <!-- End Report Dropdown -->
+        @if($admin)
+          <!-- Report Dropdown -->
+          <li>
+            <a href="#subPagesReports" data-toggle="collapse" class="collapsed"><i class="lnr lnr-book"></i> <span>Reports</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subPagesReports" class="collapse ">
+              <ul class="nav">
+                <li><a href="/reports" class=""><i class="lnr lnr-menu-circle"></i> <span>View Reports</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- End Report Dropdown -->
+        @endif
 
-        <!-- Admin Dropdown -->
-        <li>
-          <a href="#subPagesAdmins" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Admins</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-          <div id="subPagesAdmins" class="collapse ">
-            <ul class="nav">
-              <li><a href="/admins" class=""><i class="lnr lnr-menu-circle"></i> <span>View Admins</span></a></li>
-              <li><a href="/admins/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Admins</span></a></li>
-            </ul>
-          </div>
-        </li>
-        <!-- End Admin Dropdown -->
- 
+        @if($admin)
+          <!-- Admin Dropdown -->
+          <li>
+            <a href="#subPagesAdmins" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Admins</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subPagesAdmins" class="collapse ">
+              <ul class="nav">
+                <li><a href="/admins" class=""><i class="lnr lnr-menu-circle"></i> <span>View Admins</span></a></li>
+                <li><a href="/admins/create" class=""><i class="lnr lnr-plus-circle"></i> <span>Create Admins</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- End Admin Dropdown -->
+        @endif
+
+        @if($admin)
           <!-- User Dropdown -->
           <li>
             <a href="#subPagesUsers" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Users</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
@@ -73,6 +82,7 @@
             </div>
           </li>
           <!-- End User Dropdown -->
+        @endif
 
         <!-- Settings Dropdown -->
         <li>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Timecard;
 use App\Summary;
 use App\Employee;
+use App\Admin;
 
 class PagesController extends Controller
 {
@@ -22,9 +23,13 @@ class PagesController extends Controller
     }
 
     public function profile() {
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+
         $data = [
             'title'=>'Profile Page',
-            'user'=>'Brad'
+            'user'=>'Brad',
+            'admin' => $admin
 
         ];
         return view('pages.profile')->with($data);
@@ -53,12 +58,15 @@ class PagesController extends Controller
         
         // Get all summaries for all users
         $summaries = Summary::orderBy('id', 'desc')->get();
+        // Check if Admin
+        $admin = Admin::where('user_id', '=', $user_id)->first();
         
         // return them with blade
         return view('pages.dashboard')->with(
             [
                 'timecards' => $timecards, 
-                'summaries' => $summaries
+                'summaries' => $summaries,
+                'admin' => $admin
             ]
         );
     }

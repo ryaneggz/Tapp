@@ -25,12 +25,13 @@ class ReportsController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($admin) {
             $reports = Report::orderBy('id', 'desc')->paginate(30);
-            // return $reports;
             return view('reports.index')->with(
                 [
-                    'reports' => $reports
+                    'reports' => $reports,
+                    'admin' => $admin
                 ]
             );
         } else {
@@ -101,14 +102,19 @@ class ReportsController extends Controller
      */
     public function show($id)
     {
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+        
         $report = Report::find($id);
         $user_employee_id = $report->employee_id;
         $employee = Employee::find($user_employee_id);
         $employee_name = $employee->user->name;
+        
         return view('reports.show')->with(
             [
                 'report' => $report,
-                'employee_name' => $employee_name
+                'employee_name' => $employee_name,
+                'admin' => $admin
             ]
         );
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Summary;
 use App\Employee;
+use App\Admin;
 
 class SummariesController extends Controller
 {
@@ -20,8 +21,16 @@ class SummariesController extends Controller
      */
     public function index()
     {
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+
         $summaries = Summary::orderBy('created_at','desc')->paginate(10);
-        return view('summaries.index')->with('summaries', $summaries);
+        return view('summaries.index')->with(
+            [
+                'summaries' => $summaries,
+                'admin' => $admin
+            ]
+        );
     }
 
     /** 
@@ -33,9 +42,16 @@ class SummariesController extends Controller
     {
         $user_id = auth()->user()->id;
         $employee = Employee::where('user_id', '=', $user_id)->first();
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($employee) {
             $employees = Employee::all();
-            return view('summaries.create')->with('employees', $employees);
+            return view('summaries.create')->with(
+                [
+                    'employees' => $employees,
+                    'admin' => $admin
+                ]
+            );
         } else {
             return redirect('/summaries');
         }
@@ -74,8 +90,16 @@ class SummariesController extends Controller
      */
     public function show($id)
     {
+        $user_id = auth()->user()->id;
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+
         $summary = Summary::find($id);
-        return view('summaries.show')->with('summary', $summary);
+        return view('summaries.show')->with(
+            [
+                'summary' => $summary,
+                'admin' => $admin
+            ]
+        );
     }
 
     /**
@@ -90,7 +114,11 @@ class SummariesController extends Controller
         $employee_id = $summary->employee_id;
         $employees = Employee::all();
 
-        if(auth()->user()->employee_id !== $summary->employee->id) {
+        $user_id = auth()->user()->id;
+        $auth_employee = Employee::where('user_id', '=', $user_id)->first();
+        $admin = Admin::where('user_id', '=', $user_id)->first();
+
+        if($auth_employee->id !== $summary->employee->id) {
             return redirect('/summaries')->with('error', 'Unauthorized Page');
         }
 
@@ -98,7 +126,8 @@ class SummariesController extends Controller
             [
                 'summary' => $summary,
                 'employee_id' => $employee_id,
-                'employees' => $employees
+                'employees' => $employees,
+                'admin' => $admin
             ]
         );
     }

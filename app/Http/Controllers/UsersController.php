@@ -22,9 +22,15 @@ class UsersController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($admin) {
             $users = User::orderBy('id','asc')->paginate(10);
-            return view('users.index')->with('users', $users);
+            return view('users.index')->with(
+                [
+                    'users' => $users,
+                    'admin' => $admin
+                ]
+            );
         } else {
             return redirect('/dashboard');
         }
@@ -40,9 +46,15 @@ class UsersController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($admin) {
             $user = User::find($id);
-            return view('users.show')->with('user', $user);
+            return view('users.show')->with(
+                [
+                    'user' => $user,
+                    'admin' => $admin
+                ]
+            );
         } else {
             return redirect('/dashboard');
         }
@@ -58,9 +70,15 @@ class UsersController extends Controller
     {
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($admin) {
             $user = User::find($id);
-            return view('users.edit')->with('user', $user);
+            return view('users.edit')->with(
+                [
+                    'user' => $user,
+                    'admin' => $admin
+                ]
+            );
         } else {
             return redirect('/dashboard');
         }

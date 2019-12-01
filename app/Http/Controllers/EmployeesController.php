@@ -24,11 +24,13 @@ class EmployeesController extends Controller
         // Check if User is Admin
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($admin) {
             $employees = Employee::orderBy('id','asc')->paginate(10);
             return view('employees.index')->with(
                 [
-                    'employees' => $employees
+                    'employees' => $employees,
+                    'admin' => $admin
                 ]
             );
         // If not Admin redirect
@@ -47,6 +49,7 @@ class EmployeesController extends Controller
         // Check if User is Admin
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
+
         if($admin) {
 
             // Get list of Users
@@ -54,7 +57,8 @@ class EmployeesController extends Controller
 
             return view('employees.create')->with(
                 [
-                    'users' => $users
+                    'users' => $users,
+                    'admin' => $admin
                 ]
             );
         // If not Admin redirect
@@ -101,7 +105,12 @@ class EmployeesController extends Controller
         if($admin) {
 
             $employee = Employee::find($id);
-            return view('employees.show')->with('employee', $employee);
+            return view('employees.show')->with(
+                [
+                    'employee' => $employee,
+                    'admin' => $admin
+                ]
+            );
 
         // If not Admin redirect
         } else {
@@ -123,7 +132,12 @@ class EmployeesController extends Controller
         if($admin) {
 
             $employee = Employee::find($id);
-            return view('employees.edit')->with('employee', $employee);
+            return view('employees.edit')->with(
+                [
+                    'employee' => $employee,
+                    'admin' => $admin
+                ]
+            );
 
         // If not Admin redirect
         } else {

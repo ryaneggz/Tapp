@@ -20,7 +20,12 @@ class AdminsController extends Controller
         if($admin) {
             
             $admins = Admin::orderBy('id','asc')->paginate(10);
-            return view('admins.index')->with('admins', $admins);
+            return view('admins.index')->with(
+                [
+                    'admins' => $admins,
+                    'admin' => $admin
+                ]
+            );
 
         } else {
             return redirect('/dashboard');
@@ -45,7 +50,8 @@ class AdminsController extends Controller
             // return view with users list if is admin
             return view('admins.create')->with(
                 [
-                    'users' => $users
+                    'users' => $users,
+                    'admin' => $admin
                 ]
             );
         // If not redirect to dashboard
