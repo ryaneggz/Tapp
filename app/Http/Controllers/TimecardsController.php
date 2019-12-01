@@ -21,9 +21,13 @@ class TimecardsController extends Controller
      */
     public function index()
     {   
+        // Set default time for application
+        $date = date_default_timezone_set("America/Chicago");
+
         // return Timecard::orderBy('time_in', 'desc')->paginate(30);
         $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
 
+        // Auth checks
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
         $employee = Employee::where('user_id', '=', $user_id)->first();
@@ -46,6 +50,9 @@ class TimecardsController extends Controller
      */
     public function create()
     {
+        // Set default time for application
+        $date = date_default_timezone_set("America/Chicago");
+
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
         $employee = Employee::where('user_id', '=', $user_id)->first();
@@ -180,6 +187,9 @@ class TimecardsController extends Controller
      */
     public function show($id)
     {
+        // Set default time for application
+        $date = date_default_timezone_set("America/Chicago");
+
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
         $employee = Employee::where('user_id', '=', $user_id)->first();
@@ -206,6 +216,9 @@ class TimecardsController extends Controller
      */
     public function edit($id)
     {
+        // Set default time for application
+        $date = date_default_timezone_set("America/Chicago");
+
         // Get Admin info
         $user_id = auth()->user()->id;
         $admin = Admin::where('user_id', '=', $user_id)->first();
@@ -291,18 +304,4 @@ class TimecardsController extends Controller
     {
         return view('timecards.kiosk');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function save(Request $request)
-    {
-        $employee = Employee::where('card_number', '=', $request->card_number);
-        return $employee;
-    }
-
-
 }

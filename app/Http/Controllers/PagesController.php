@@ -42,6 +42,8 @@ class PagesController extends Controller
     }
 
     public function dashboard() {
+        $date = date_default_timezone_set("America/Chicago");
+
         // What's authenticated user variable
         $user_id = auth()->user()->id;
 
