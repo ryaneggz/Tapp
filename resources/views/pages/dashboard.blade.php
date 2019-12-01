@@ -22,10 +22,18 @@
 									<div class="panel-body table-responsive">
 										<table class="table table-bordered text-center table-hover">
 											<thead>
-												<tr class="bg-info"><th>Shift</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th></tr>
+												<tr class="bg-info">
+													<th class="text-center">Shift</th>
+													<th class="text-center">Monday</th>
+													<th class="text-center">Tuesday</th>
+													<th class="text-center">Wednesday</th>
+													<th class="text-center">Thursday</th>
+													<th class="text-center">Friday</th>
+													<th class="text-center">Saturday</th>
+													<th class="text-center">Sunday</th>
+												</tr>
 											</thead>
 											<tbody>
-	
 												<!-- TIMECARD TABLE --> 
 												@if(count($schedules) > 0)
 												@foreach($schedules as $schedule)
@@ -57,7 +65,18 @@
 														<td @if($sunday_evening) style="background: {{$sunday_evening->color}}"@endif>@if($sunday_evening) {{ $sunday_evening->user->name }} @endif</td>
 													</tr>
 												@endforeach
-													{{$schedules->links()}}
+													<div class="row">
+
+														<div class="container-fluid">
+															<div class="col-md-3">
+																<h4>Weekly Schedule: [ {{$schedule->id}} ]</h4>
+															</div>
+															<div class="col pull-right">
+																{{$schedules->links()}}
+															</div>
+														</div>
+														
+													</div>
 												@else
 												<td>No Schedules Found</td>
 											@endif
@@ -70,7 +89,7 @@
 									{{ Form::close() }}
 									<div class="panel-footer">
 										<div class="row">
-											<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
+											<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i>Created on {{$schedule->created_at}}</span></div>
 											<div class="col-md-6 text-right"><a href="/schedules/{{$schedule->id}}/edit" class="btn btn-primary">Edit Schedule</a></div>
 										</div>
 									</div>
