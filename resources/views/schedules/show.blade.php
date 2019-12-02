@@ -20,7 +20,7 @@
 							<!-- BORDERED TABLE -->
 							<div class="panel">
                 <div class="panel-heading">
-                  <a href="/schedules" class="btn btn-default">Go Back</a>
+								<a href="/schedules?page={{$schedule->id}}" class="btn btn-default">Go Back</a>
                   <h3 class="panel-title pull-right">
                     Week ID: {{$schedule->id}}
                   </h3>

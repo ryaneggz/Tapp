@@ -22,7 +22,15 @@
 								<div class="panel-body table-responsive">
 									<table class="table table-bordered text-center table-hover">
 										<thead>
-											<tr class="bg-info"><th>Shift</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th></tr>
+											<tr class="bg-info"><th class="text-center">Shift</th>
+                        <th class="text-center">Monday</th>
+                        <th class="text-center">Tuesday</th>
+                        <th class="text-center">Wednesday</th>
+                        <th class="text-center">Thursday</th>
+                        <th class="text-center">Friday</th>
+                        <th class="text-center">Saturday</th>
+												<th class="text-center">Sunday</th>
+											</tr>
 										</thead>
 										<tbody>
 
@@ -63,7 +71,7 @@
 															<h4>Weekly Schedule: [ {{$schedule->id}} ]</h4>
 														</div>
 														<div class="col pull-right">
-															{{$schedules->links()}}
+															{{ ($schedules->links()) }}
 														</div>
 													</div>
 												</div>
