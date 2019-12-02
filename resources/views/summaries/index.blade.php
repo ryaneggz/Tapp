@@ -27,7 +27,7 @@
                   <div style="background: {{$summary->employee->color}};" class="well col-sm-12">
                     <div class="col-sm-3">
                         @if($summary->employee->cover_image)
-                          <img style="border-radius: 100px; width: 200px;" src="/storage/cover_images/{{ $summary->employee->cover_image }}">
+                          <img style="border-radius: 100%; width: 100%;" src="/storage/cover_images/{{ $summary->employee->cover_image }}">
                         @else
                           
                         @endif
