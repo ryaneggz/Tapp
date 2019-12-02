@@ -19,13 +19,30 @@
               
               <!-- Summary Data -->
               <a href="/employees" class="btn btn-default">Go Back</a>
-              <h2>This is the Employee ID: {{$employee->id}}</h2>
-              <h3>User ID: {{$employee->user_id}}</h3>
-              <h3>User Name: {{$employee->user->name}}</h3>
-              <h3>Card Number: {{$employee->card_number}}</h3>
-              <h3>Color: {{$employee->color}}</h3>
-              <h3>Created on: {{$employee->created_at}}</h3>
-              <h3>Updated on: {{$employee->updated_at}}</h3>
+              <hr>
+
+              <div class="panel">
+                <div class="panel-body">
+                  <div class="row">
+                    <div style="padding: 25px;" class="col-md-3 text-center">
+                      @if($employee->cover_image)
+                        <img style="max-width: 250px;" src="/storage/cover_images/{{ $employee->cover_image }}" alt="Avatar" class="img-circle pull-left avatar">
+                      @else
+                    
+                      @endif
+                    </div>
+                    <div class="col-md-8">
+                      <h2>This is the Employee ID: {{$employee->id}}</h2>
+                      <h3>User ID: {{$employee->user_id}}</h3>
+                      <h3>User Name: {{$employee->user->name}}</h3>
+                      <h3>Card Number: {{$employee->card_number}}</h3>
+                      <h3>Color: {{$employee->color}}</h3>
+                      <h3>Created on: {{$employee->created_at}}</h3>
+                      <h3>Updated on: {{$employee->updated_at}}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <hr>
               <!-- Edit button -->
               <a href="/employees/{{$employee->id}}/edit" class="btn btn-default">Edit</a>
