@@ -38,6 +38,6 @@ class Test extends Command
      */
     public function handle()
     {
-        echo "A message is here";
+        echo "A message is here\n";
     }
 }
