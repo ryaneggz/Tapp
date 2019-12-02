@@ -29,7 +29,7 @@
                         @if($summary->employee->cover_image)
                           <img style="border-radius: 100px; width: 200px;" src="/storage/cover_images/{{ $summary->employee->cover_image }}">
                         @else
-                          <img style="border-radius: 100px; width: 200px;" src="/storage/cover_images/noimage.jpg">
+                          
                         @endif
                     </div>
                     <div class="col-sm-8">
