@@ -25,7 +25,7 @@
               <!-- Edit Employee Form -->
               <div class="col-md-12">
                 <h1>Edit Employee</h1>
-                {{ Form::open(['action' => ['EmployeesController@update', $employee->id], 'method' => 'POST']) }}
+                {{ Form::open(['action' => ['EmployeesController@update', $employee->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
 
                 <div class='form-group'>
                   {{ Form::label('user_id', 'User ID') }}
@@ -40,6 +40,10 @@
                 <div class='form-group'>
                   {{ Form::label('color', 'Hex Color') }}
                   {{ Form::text('color', $employee->color, ['style' => 'background: ' . $employee->color . ';', 'class' => 'form-control', 'placeholder' => 'Enter hex color..']) }}
+                </div>
+
+                <div class='form-group'>
+                  {{ Form::file('cover_image') }}                  
                 </div>
 
                 {{ Form::hidden('_method', 'PUT') }}

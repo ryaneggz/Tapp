@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Employee;
 use App\User;
 use App\Admin;
@@ -82,8 +83,25 @@ class EmployeesController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'card_number' => 'required',
-            'color' => 'max:7'
+            'color' => 'max:7',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
+
+        // Handle File Upload
+        if($request->hasFile('cover_image')) {
+            // Get filename with extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
 
         // Create Summary
         $employee = new Employee;
@@ -91,7 +109,7 @@ class EmployeesController extends Controller
         $employee->user_id = $request->input('user_id');
         $employee->card_number = $request->input('card_number');
         $employee->color = $request->input('color');
-
+        $employee->cover_image = $fileNameToStore;
         $employee->save();
 
         return redirect('/employees')->with('success', 'Employee Created');
@@ -164,8 +182,23 @@ class EmployeesController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'card_number' => 'required',
-            'color' => 'max:7'
+            'color' => 'max:7',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
+
+        // Handle File Upload
+        if($request->hasFile('cover_image')) {
+            // Get filename with extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        }
 
         // Create Summary
         $employee = Employee::find($id);
@@ -173,7 +206,9 @@ class EmployeesController extends Controller
         $employee->user_id = $request->input('user_id');
         $employee->card_number = $request->input('card_number');
         $employee->color = $request->input('color');
-
+        if($request->hasFile('cover_image')) {
+            $employee->cover_image = $fileNameToStore ;
+        }
         $employee->save();
 
         return redirect('/employees')->with('success', 'Employee Updated');
@@ -189,6 +224,11 @@ class EmployeesController extends Controller
     {
         $employee = Employee::find($id);
         $employee->delete();
+
+        if($employee->cover_image != 'noimage.jpg') {
+            // Delete image
+            Storage::delete('public/cover_images/'.$employee->cover_image); 
+        }
         
         // After deleteing redirect back to object index
         return redirect('/employees')->with('success', 'Employee Removed');

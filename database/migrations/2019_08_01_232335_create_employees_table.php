@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->bigInteger('user_id')->unsigned()->index();
             $table->string('card_number')->nullable();
             $table->char('color', 7)->nullable();
+            $table->string('cover_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

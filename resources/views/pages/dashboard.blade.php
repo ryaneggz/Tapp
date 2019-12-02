@@ -160,7 +160,11 @@
 											@if(count($summaries) > 0)
 												@foreach($summaries as $summary)
 													<li>
-														<img src="assets/img/user1.png" alt="Avatar" class="img-circle pull-left avatar">
+														@if($summary->employee->cover_image)
+															<img src="/storage/cover_images/{{ $summary->employee->cover_image }}" alt="Avatar" class="img-circle pull-left avatar">
+														@else
+															
+														@endif
 														<p><a href="/summaries/{{$summary->id}}">{{$summary->employee->user->name}}</a><br> {!!$summary->body!!} <br><span class="timestamp pull-right">{{$summary->updated_at}}</span></p>
 													</li>
 												@endforeach

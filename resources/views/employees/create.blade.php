@@ -25,7 +25,7 @@
               <!-- Employee Form -->
               <div class="col-md-12">
                 <h1>Create Employee</h1>
-                {{ Form::open(['action' => 'EmployeesController@store', 'method' => 'POST']) }}
+                {{ Form::open(['action' => 'EmployeesController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
 
                   <div class='form-group'>
                     {{ Form::label('user_id', 'Select User') }}
@@ -44,6 +44,10 @@
                   <div class='form-group'>
                     {{ Form::label('color', 'Hex Color') }}
                     {{ Form::text('color', '', ['class' => 'form-control', 'placeholder' => '#000000']) }}
+                  </div>
+
+                  <div class='form-group'>
+                    {{ Form::file('cover_image') }}                  
                   </div>
 
                   {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}

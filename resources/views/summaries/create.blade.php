@@ -25,7 +25,7 @@
               <!-- Summary Form -->
               <div class="col-md-12">
                 <h1>Create Post</h1>
-                {{ Form::open(['action' => 'SummariesController@store', 'method' => 'POST']) }}
+                {!! Form::open(['action' => 'SummariesController@store', 'method' => 'POST']) !!}
 
                   <div class='form-group'>
                     {{ Form::label('body', 'Summary') }}

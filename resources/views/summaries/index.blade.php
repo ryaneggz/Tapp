@@ -25,9 +25,18 @@
               @if(count($summaries) > 0)
                 @foreach($summaries as $summary)
                   <div style="background: {{$summary->employee->color}};" class="well col-sm-12">
-                    <h3><a style="color: black;" href="/summaries/{{$summary->id}}">{{$summary->employee->user->name}}</a></h3>
-                    <small>Written on {{$summary->created_at}}</small><br>
-                    <small>Updated on {{$summary->updated_at}}</small>
+                    <div class="col-sm-3">
+                        @if($summary->employee->cover_image)
+                          <img style="border-radius: 100px; width: 200px;" src="/storage/cover_images/{{ $summary->employee->cover_image }}">
+                        @else
+                          <img style="border-radius: 100px; width: 200px;" src="/storage/cover_images/noimage.jpg">
+                        @endif
+                    </div>
+                    <div class="col-sm-8">
+                      <h3><a style="color: black;" href="/summaries/{{$summary->id}}">{{$summary->employee->user->name}}</a></h3>
+                      <small>Written on {{$summary->created_at}}</small><br>
+                      <small>Updated on {{$summary->updated_at}}</small>
+                    </div>
                   </div>
                 @endforeach
                 {{$summaries->links()}}
