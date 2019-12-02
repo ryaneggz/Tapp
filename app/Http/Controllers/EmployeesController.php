@@ -82,6 +82,7 @@ class EmployeesController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'card_number' => 'required',
+            'color' => 'max:7'
         ]);
 
         // Create Summary
@@ -163,6 +164,7 @@ class EmployeesController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'card_number' => 'required',
+            'color' => 'max:7'
         ]);
 
         // Create Summary

@@ -191,7 +191,8 @@ class SchedulesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+
         // Create each Report
         $schedule = new Schedule;
 
