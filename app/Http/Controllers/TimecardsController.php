@@ -26,6 +26,7 @@ class TimecardsController extends Controller
 
         // return Timecard::orderBy('time_in', 'desc')->paginate(30);
         $timecards = Timecard::orderBy('time_in', 'desc')->paginate(30);
+        $last_timeout = Timecard::orderBy('time_out', 'desc')->first();
 
         // Auth checks
         $user_id = auth()->user()->id;
@@ -38,7 +39,8 @@ class TimecardsController extends Controller
             [
                 'timecards' => $timecards,
                 'admin' => $admin,
-                'employee' => $employee
+                'employee' => $employee,
+                'last_timeout' => $last_timeout
             ]
         );
     }
