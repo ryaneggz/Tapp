@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group">
-                      <div class="col-">
+                      <div class="col">
                         {{ Form::label('time_in', 'Time-in') }}
                         <input class="form-control" value={{ date('Y-m-d\TH:i', $timecard->time_in) }} type="datetime-local" name="time_in">
                       </div>

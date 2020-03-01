@@ -100,6 +100,19 @@
           <!-- End User Dropdown -->
         @endif
 
+        @if($admin)
+          <!-- User Dropdown -->
+          <li>
+            <a href="#subPagesLeshan" data-toggle="collapse" class="collapsed"><i class="lnr lnr-users"></i> <span>Leshan</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+            <div id="subPagesLeshan" class="collapse ">
+              <ul class="nav">
+                <li><a href="/leshan" class=""><i class="lnr lnr-menu-circle"></i> <span>View Clients</span></a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- End User Dropdown -->
+        @endif
+
         <!-- Settings Dropdown -->
         <li>
           <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Settings</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>

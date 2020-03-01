@@ -55,7 +55,6 @@ class EmployeesController extends Controller
         $employee = Employee::where('user_id', '=', $user_id)->first();
 
         if($admin) {
-
             // Get list of Users
             $users = User::all();
 
@@ -210,7 +209,7 @@ class EmployeesController extends Controller
             $employee->cover_image = $fileNameToStore ;
         }
         $employee->save();
-
+        return $employee;
         return redirect('/employees')->with('success', 'Employee Updated');
     }
 
